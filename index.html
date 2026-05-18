@@ -8,17 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
 :root {
-  --iron-black: #2D1B0E;
-  --fire-orange: #CC4A20;
-  --fire-red: #8B1A1A;
-  --corn-gold: #D4A030;
-  --wood-brown: #8B6914;
-  --cream: #FFF5E6;
-  --cream-dark: #F5EBE0;
-  --dark: #1A0D08;
-  --text: #3A2A1A;
+  --iron-black: #2D4A3A;
+  --fire-orange: #4A7C59;
+  --fire-red: #6B8F71;
+  --corn-gold: #8B7355;
+  --wood-brown: #A0896E;
+  --cream: #F0EDE5;
+  --cream-dark: #E8E0D5;
+  --dark: #2D4A3A;
+  --text: #2D2416;
   --text-light: #8A7A6A;
-  --shadow: rgba(45,27,14,0.2);
+  --leaf-green: #5B8C5A;
+  --mist-white: #F5F2EC;
+  --shadow: rgba(45,74,58,0.15);
   --radius: 16px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -43,7 +45,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #1A0D08 0%, #2D1B0E 30%, #4A2A18 60%, #1A0D08 100%);
+  background: linear-gradient(135deg, #1A3A2A 0%, #2D4A3A 30%, #3D5B4A 60%, #1A3A2A 100%);
 }
 .hero-bg::before {
   content: '';
@@ -185,7 +187,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.nav a:hover, .nav a.active { color: var(--corn-gold); background: rgba(212,160,48,0.1); }
+.nav a:hover, .nav a.active { color: var(--corn-gold); background: rgba(139,115,85,0.1); }
 
 /* ===== SECTION ===== */
 .section {
@@ -201,7 +203,7 @@ body {
   display: inline-block;
   font-family: 'Noto Serif SC', serif;
   font-size: 0.8rem;
-  color: var(--fire-orange)r(--fire-orange);
+  color: var(--fire-orange);
   border: 1px solid var(--fire-orange);
   padding: 0.2rem 0.8rem;
   border-radius: 4px;
@@ -225,7 +227,7 @@ body {
 /* ===== CARDS ===== */
 .card {
   background: linear-gradient(135deg, rgba(255,245,230,0.05), rgba(255,245,230,0.02));
-  border: 1px solid rgba(212,160,48,0.15);
+  border: 1px solid rgba(139,115,85,0.15);
   border-radius: var(--radius);
   padding: 2rem;
   margin-bottom: 1.5rem;
@@ -303,8 +305,8 @@ body {
   font-weight: 500;
 }
 .tag-red { background: rgba(139,26,26,0.3); color: #e06060; border: 1px solid rgba(139,26,26,0.4); }
-.tag-gold { background: rgba(212,160,48,0.2); color: #D4A030r(--corn-gold);
-  border: 1px solid rgba(212,160,48,0.4); }
+.tag-gold { background: rgba(139,115,85,0.2); color: var(--corn-gold);
+  border: 1px solid rgba(139,115,85,0.4); }
 
 /* ===== TABLE ===== */
 .table-wrap {
@@ -327,9 +329,9 @@ table.data th {
 table.data td {
   padding: 0.7rem 1rem;
   color: rgba(255,245,230,0.75);
-  border-bottom: 1px solid rgba(212,160,48,0.08);
+  border-bottom: 1px solid rgba(139,115,85,0.08);
 }
-table.data tr:hover td { background: rgba(212,160,48,0.05); }
+table.data tr:hover td { background: rgba(139,115,85,0.05); }
 
 /* ===== BUDGET BAR ===== */
 .budget-chart {
@@ -379,7 +381,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
   font-weight: 700;
   margin-top: 0.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(212,160,48,0.15);
+  border-top: 1px solid rgba(139,115,85,0.15);
 }
 
 /* ===== KPI CARDS ===== */
@@ -390,8 +392,8 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
   margin: 1.5rem 0;
 }
 .kpi-card {
-  background: linear-gradient(135deg, rgba(212,160,48,0.08), rgba(204,74,32,0.05));
-  border: 1px solid rgba(212,160,48,0.15);
+  background: linear-gradient(135deg, rgba(139,115,85,0.08), rgba(74,124,89,0.05));
+  border: 1px solid rgba(139,115,85,0.15);
   border-radius: var(--radius);
   padding: 1.5rem;
   text-align: center;
@@ -443,7 +445,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
   margin: 1.5rem 0;
 }
 .competitor-card {
-  border: 1px solid rgba(212,160,48,0.12);
+  border: 1px solid rgba(139,115,85,0.12);
   border-radius: var(--radius);
   padding: 1.5rem;
   background: rgba(255,245,230,0.02);
@@ -454,15 +456,16 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 .competitor-score { color: var(--corn-gold); font-size: 0.9rem; margin: 0.3rem 0; }
 .competitor-desc { color: rgba(255,245,230,0.6); font-size: 0.8rem; line-height: 1.6; }
 
-/* ===== 动效 ===== */
-@keyframes floatEmber {
-  0% { transform: translateY(0) scale(1); opacity: 0.8; }
-  50% { transform: translateY(-30px) scale(0.6); opacity: 0.4; }
-  100% { transform: translateY(-60px) scale(0.3); opacity: 0; }
+/* ===== 自然山野动效 ===== */
+@keyframes floatLeaf {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+  15% { opacity: 0.5; }
+  50% { transform: translateY(-50vh) rotate(180deg) scale(0.8); opacity: 0.3; }
+  100% { transform: translateY(-100vh) rotate(360deg) scale(0.4); opacity: 0; }
 }
-@keyframes fireGlow {
-  0%,100% { text-shadow: 0 0 20px rgba(204,74,32,0.3), 0 0 40px rgba(204,74,32,0.1); }
-  50% { text-shadow: 0 0 30px rgba(204,74,32,0.6), 0 0 60px rgba(204,74,32,0.3); }
+@keyframes leafGlow {
+  0%,100% { text-shadow: 0 0 15px rgba(74,124,89,0.15), 0 0 30px rgba(74,124,89,0.05); }
+  50% { text-shadow: 0 0 25px rgba(74,124,89,0.35), 0 0 50px rgba(74,124,89,0.1); }
 }
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -470,73 +473,70 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
   100% { background-position: 0% 50%; }
 }
 @keyframes cardGlow {
-  0%,100% { box-shadow: 0 0 0 rgba(212,160,48,0); }
-  50% { box-shadow: 0 0 20px rgba(212,160,48,0.12); }
-  100% { box-shadow: 0 0 0 rgba(212,160,48,0); }
+  0%,100% { box-shadow: 0 2px 12px rgba(74,124,89,0.06); }
+  50% { box-shadow: 0 8px 28px rgba(74,124,89,0.1); }
 }
 @keyframes borderPulse {
-  0% { border-color: rgba(212,160,48,0.1); }
-  50% { border-color: rgba(212,160,48,0.4); }
-  100% { border-color: rgba(212,160,48,0.1); }
+  0% { border-color: rgba(74,124,89,0.1); }
+  50% { border-color: rgba(74,124,89,0.3); }
+  100% { border-color: rgba(74,124,89,0.1); }
 }
 .gradient-text {
-  background: linear-gradient(135deg, #FF6B35, #D4A030, #FF6B35);
+  background: linear-gradient(135deg, #4A7C59, #6B8F71, #4A7C59);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
   animation: gradientShift 4s ease infinite;
 }
-.fire-text {
-  animation: fireGlow 3s ease-in-out infinite;
+.nature-text {
+  animation: leafGlow 3s ease-in-out infinite;
 }
-.ember-container {
+.leaf-container {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
 }
-.ember {
+.leaf {
   position: absolute;
-  bottom: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--fire-orange);
-  box-shadow: 0 0 8px rgba(204,74,32,0.8);
-  animation: floatEmber 5s ease-in-out infinite;
+  top: -30px;
+  opacity: 0;
+  animation: floatLeaf 8s ease-in-out infinite;
 }
-.ember:nth-child(1) { left: 10%; animation-delay: 0s; background: #FF6B35; }
-.ember:nth-child(2) { left: 25%; animation-delay: 1.2s; width: 4px; height: 4px; background: #D4A030; }
-.ember:nth-child(3) { left: 40%; animation-delay: 2.5s; width: 5px; height: 5px; background: #FF4500; }
-.ember:nth-child(4) { left: 55%; animation-delay: 0.8s; }
-.ember:nth-child(5) { left: 70%; animation-delay: 3.2s; width: 3px; height: 3px; background: #D4A030; }
-.ember:nth-child(6) { left: 85%; animation-delay: 1.8s; }
-.ember:nth-child(7) { left: 15%; animation-delay: 4s; width: 7px; height: 7px; background: #FF4500; }
-.ember:nth-child(8) { left: 50%; animation-delay: 2.2s; width: 4px; height: 4px; background: #FFB347; }
-.ember:nth-child(9) { left: 75%; animation-delay: 0.5s; }
-.ember:nth-child(10) { left: 35%; animation-delay: 3.5s; width: 5px; height: 5px; background: #FF6B35; }
+.leaf:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 1.3rem; }
+.leaf:nth-child(2) { left: 20%; animation-delay: 2.5s; font-size: 0.8rem; }
+.leaf:nth-child(3) { left: 35%; animation-delay: 4s; font-size: 1rem; }
+.leaf:nth-child(4) { left: 50%; animation-delay: 1.5s; font-size: 0.9rem; }
+.leaf:nth-child(5) { left: 65%; animation-delay: 3.2s; font-size: 1.1rem; }
+.leaf:nth-child(6) { left: 80%; animation-delay: 5.5s; font-size: 0.7rem; }
+.leaf:nth-child(7) { left: 92%; animation-delay: 1.8s; font-size: 1.2rem; }
+.leaf:nth-child(8) { left: 42%; animation-delay: 6s; font-size: 0.8rem; }
+.leaf:nth-child(9) { left: 12%; animation-delay: 3.8s; font-size: 1rem; }
+.leaf:nth-child(10) { left: 72%; animation-delay: 2s; font-size: 0.9rem; }
 
 .card {
-  border: 1px solid rgba(212,160,48,0.12);
+  border: 1px solid rgba(74,124,89,0.1);
   animation: cardGlow 4s ease-in-out infinite;
   transition: all 0.4s ease;
+  background: linear-gradient(135deg, rgba(240,237,229,0.95), rgba(245,242,236,0.95)) !important;
 }
 .card:hover {
-  border-color: var(--corn-gold);
+  border-color: var(--fire-orange);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(204,74,32,0.2);
+  box-shadow: 0 12px 40px rgba(74,124,89,0.15);
 }
 
 .section-number {
-  animation: fireGlow 3s ease-in-out infinite;
+  animation: leafGlow 3s ease-in-out infinite;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   padding: 3rem 1.5rem;
-  border-top: 1px solid rgba(212,160,48,0.1);
+  border-top: 1px solid rgba(139,115,85,0.1);
   color: rgba(255,245,230,0.3);
   font-size: 0.8rem;
 }
@@ -557,23 +557,24 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 </style>
 </head>
 <body>
-<div class="ember-container">
-  <div class="ember"></div><div class="ember"></div>
-  <div class="ember"></div><div class="ember"></div>
-  <div class="ember"></div><div class="ember"></div>
-  <div class="ember"></div><div class="ember"></div>
-  <div class="ember"></div><div class="ember"></div>
+<div class="leaf-container">
+  <div class="leaf">🍃</div><div class="leaf">🌿</div>
+  <div class="leaf">🍂</div><div class="leaf">🍃</div>
+  <div class="leaf">🌿</div><div class="leaf">🍂</div>
+  <div class="leaf">🍃</div><div class="leaf">🌿</div>
+  <div class="leaf">🍂</div><div class="leaf">🍃</div>
 </div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content" style="opacity:0">
-    <div class="hero-badge">🔥 塘沽新店 · 装修中</div>
-    <h1 class="hero-title fire-text">山野间</h1>
-    <div class="hero-sub fire-text">铁锅炖</div>
+    <div class="hero-badge">🌿 塘沽新店 · 装修中</div>
+    <h1 class="hero-title nature-text">山野间</h1>
+<h1 class="hero-title nature-text">山野间</h1>
+    <div class="hero-sub nature-text">铁锅炖</div>
     <p class="hero-desc">山野食材 · 柴火现炖 · 东北老味道<br>塘沽杭州道 · 170㎡双层空间 · 二楼包间</p>
-    <a href="#module1" class="hero-cta">👇 查看完整方案</a>
+    <a href="#module1" class="hero-cta">🌿 查看完整方案</a>
   </div>
   <div class="scroll-indicator">
     <span>向下滚动</span>
@@ -1060,7 +1061,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     <h2 class="gradient-text">总结</h2>
     <p>稳扎稳打 · 开业即爆</p>
   </div>
-  class="card" style="opacity:0;text-align:center;border:2px solid rgba(212,160,48,0.3)">
+  class="card" style="opacity:0;text-align:center;border:2px solid rgba(139,115,85,0.3)">
     <p style="font-size:1.1rem;line-height:2;color:rgba(255,245,230,0.85)">
       山野间铁锅炖坐拥<strong style="color:var(--corn-gold)">塘沽成熟社区位置</strong>，<br>
       170㎡空间+包间配置在同品类中具备竞争力。<br><br>
@@ -1091,7 +1092,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     p.style.animationDelay = (Math.random() * 10) + 's';
     p.style.width = (2 + Math.random() * 4) + 'px';
     p.style.height = p.style.width;
-    p.style.background = ['#D4A030','#CC4A20','#8B1A1A','#FFB300'][Math.floor(Math.random()*4)];
+    p.style.background = ['#8B7355','#4A7C59','#6B8F71','#5B8C5A'][Math.floor(Math.random()*4)];
     hero.appendChild(p);
   }
 })();
