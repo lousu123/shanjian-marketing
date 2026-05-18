@@ -454,88 +454,83 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 .competitor-score { color: var(--corn-gold); font-size: 0.9rem; margin: 0.3rem 0; }
 .competitor-desc { color: rgba(255,245,230,0.6); font-size: 0.8rem; line-height: 1.6; }
 
-/* ===== PASSWORD ===== */
-.password-protect {
-  position: relative;
+/* ===== 动效 ===== */
+@keyframes floatEmber {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-30px) scale(0.6); opacity: 0.4; }
+  100% { transform: translateY(-60px) scale(0.3); opacity: 0; }
 }
-.password-overlay {
-  position: absolute;
+@keyframes fireGlow {
+  0%,100% { text-shadow: 0 0 20px rgba(204,74,32,0.3), 0 0 40px rgba(204,74,32,0.1); }
+  50% { text-shadow: 0 0 30px rgba(204,74,32,0.6), 0 0 60px rgba(204,74,32,0.3); }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes cardGlow {
+  0%,100% { box-shadow: 0 0 0 rgba(212,160,48,0); }
+  50% { box-shadow: 0 0 20px rgba(212,160,48,0.12); }
+  100% { box-shadow: 0 0 0 rgba(212,160,48,0); }
+}
+@keyframes borderPulse {
+  0% { border-color: rgba(212,160,48,0.1); }
+  50% { border-color: rgba(212,160,48,0.4); }
+  100% { border-color: rgba(212,160,48,0.1); }
+}
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B35, #D4A030, #FF6B35);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+.fire-text {
+  animation: fireGlow 3s ease-in-out infinite;
+}
+.ember-container {
+  position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, rgba(45,27,14,0.97), rgba(26,13,8,0.97));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius);
-  z-index: 10;
-  padding: 2rem;
-  backdrop-filter: blur(8px);
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.password-overlay.unlocked {
-  opacity: 0;
-  visibility: hidden;
   pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
 }
-.password-overlay .lock-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  animation: lockBounce 2s ease-in-out infinite;
+.ember {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fire-orange);
+  box-shadow: 0 0 8px rgba(204,74,32,0.8);
+  animation: floatEmber 5s ease-in-out infinite;
 }
-@keyframes lockBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.ember:nth-child(1) { left: 10%; animation-delay: 0s; background: #FF6B35; }
+.ember:nth-child(2) { left: 25%; animation-delay: 1.2s; width: 4px; height: 4px; background: #D4A030; }
+.ember:nth-child(3) { left: 40%; animation-delay: 2.5s; width: 5px; height: 5px; background: #FF4500; }
+.ember:nth-child(4) { left: 55%; animation-delay: 0.8s; }
+.ember:nth-child(5) { left: 70%; animation-delay: 3.2s; width: 3px; height: 3px; background: #D4A030; }
+.ember:nth-child(6) { left: 85%; animation-delay: 1.8s; }
+.ember:nth-child(7) { left: 15%; animation-delay: 4s; width: 7px; height: 7px; background: #FF4500; }
+.ember:nth-child(8) { left: 50%; animation-delay: 2.2s; width: 4px; height: 4px; background: #FFB347; }
+.ember:nth-child(9) { left: 75%; animation-delay: 0.5s; }
+.ember:nth-child(10) { left: 35%; animation-delay: 3.5s; width: 5px; height: 5px; background: #FF6B35; }
+
+.card {
+  border: 1px solid rgba(212,160,48,0.12);
+  animation: cardGlow 4s ease-in-out infinite;
+  transition: all 0.4s ease;
 }
-.password-overlay h3 {
-  font-family: 'Noto Serif SC', serif;
-  color: var(--corn-gold);
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
+.card:hover {
+  border-color: var(--corn-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(204,74,32,0.2);
 }
-.password-overlay p {
-  color: rgba(255,245,230,0.6);
-  font-size: 0.85rem;
-  margin-bottom: 1.2rem;
+
+.section-number {
+  animation: fireGlow 3s ease-in-out infinite;
 }
-.password-input-group { display: flex; gap: 0.5rem; align-items: center; }
-.password-input-group input {
-  padding: 0.7rem 1rem;
-  border: 1px solid rgba(212,160,48,0.3);
-  border-radius: 8px;
-  background: rgba(255,245,230,0.08);
-  color: var(--cream);
-  font-size: 1rem;
-  text-align: center;
-  width: 140px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  letter-spacing: 4px;
-}
-.password-input-group input:focus { border-color: var(--corn-gold); }
-.password-input-group input::placeholder { color: rgba(255,245,230,0.3); }
-.password-input-group button {
-  padding: 0.7rem 1.2rem;
-  background: var(--corn-gold);
-  color: var(--dark);
-  border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.password-input-group button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(212,160,48,0.3);
-}
-.password-error {
-  color: #ef4444;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.password-error.show { opacity: 1; }
 
 /* ===== FOOTER ===== */
 .footer {
@@ -562,14 +557,21 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 </style>
 </head>
 <body>
+<div class="ember-container">
+  <div class="ember"></div><div class="ember"></div>
+  <div class="ember"></div><div class="ember"></div>
+  <div class="ember"></div><div class="ember"></div>
+  <div class="ember"></div><div class="ember"></div>
+  <div class="ember"></div><div class="ember"></div>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content" style="opacity:0">
     <div class="hero-badge">🔥 塘沽新店 · 装修中</div>
-    <h1 class="hero-title">山野间</h1>
-    <div class="hero-sub">铁锅炖</div>
+    <h1 class="hero-title fire-text">山野间</h1>
+    <div class="hero-sub fire-text">铁锅炖</div>
     <p class="hero-desc">山野食材 · 柴火现炖 · 东北老味道<br>塘沽杭州道 · 170㎡双层空间 · 二楼包间</p>
     <a href="#module1" class="hero-cta">👇 查看完整方案</a>
   </div>
@@ -616,9 +618,9 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
       <div><strong style="color:var(--corn-gold)">店名</strong><br><span style="color:rgba(255,245,230,0.7)">山野间铁锅炖（塘沽店）</span></div>
       <div><strong style="color:var(--corn-gold)">品类</strong><br><span style="color:rgba(255,245,230,0.7)">东北菜 · 铁锅炖</span></div>
       <div><strong style="color:var(--corn-gold)">位置</strong><br><span style="color:rgba(255,245,230,0.7)">塘沽杭州道·贝迪幼儿园东侧</span></div>
-      <div><strong style="color:var(--corn-gold)">面积</strong><br><span style="color:rgba(255,245,230,0.7)">约170㎡（一楼大厅+二楼3包间）</span></div>
+      <div><strong style="color:var(--corn-gold)">面积</strong><br><span style="color:rgba(255,245,230,0.7)">约170㎡ · 一楼8散台 · 二楼3包间</span></div>
       <div><strong style="color:var(--corn-gold)">状态</strong><br><span style="color:rgba(255,245,230,0.7)">装修中 · 暂无星级</span></div>
-      <div><strong style="color:var(--corn-gold)">人均</strong><br><span style="color:rgba(255,245,230,0.7)">预计 ¥60-70</span></div>
+      <div><strong style="color:var(--corn-gold)">人均</strong><br><span style="color:rgba(255,245,230,0.7)">预计 ¥80</span></div>
     </div>
   </div>
   <div class="card" style="opacity:0">
@@ -637,22 +639,11 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 <section class="section" id="module2">
   <div class="section-header" style="opacity:0">
     <div class="section-number">02 / 17</div>
-    <h2>整体策略框架</h2>
+    <h2 class="gradient-text">整体策略框架</h2>
     <p>五管齐下 · 全链路覆盖</p>
   </div>
-  <div class="password-protect">
-    <div class="password-overlay" id="strategyLock">
-      <div class="lock-icon">🔒</div>
-      <h3>策略内容已加密</h3>
-      <p>请输入密码查看完整策略框架</p>
-      <div class="password-input-group">
-        <input type="password" id="pwdInput" maxlength="10" placeholder="密码" onkeydown="if(event.key==='Enter')unlockStrategy()">
-        <button onclick="unlockStrategy()">解锁</button>
-      </div>
-      <div class="password-error" id="pwdError">❌ 密码错误，请重试</div>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🔥</span> 五管齐下策略</h3>
+  <div class="card" style="opacity:0">
+      <h3><span class="num">🔥</span> 围挡蓄水</span></h3>
       <div class="strategy-flow">
         <div class="strategy-item" style="animation-delay:0s">🏗️ 围挡蓄水</div>
         <span class="strategy-arrow">→</span>
@@ -671,12 +662,11 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
         <span class="tag tag-gold">"山野"品牌自带原生态信任感</span> →
         <span class="tag tag-red">围挡+DM双渠道蓄水</span> →
         <span class="tag tag-gold">"柴火现炖"差异化体验</span> →
-        团购¥68双人引流入店 →
+        团购¥99双人引流入店 →
         私域社群锁定复购 →
         家庭客群裂变传播
       </p>
     </div>
-  </div>
 </section>
 
 <!-- ===== MODULE 3: DM单 ===== -->
@@ -699,7 +689,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     <h3><span class="num">🎨</span> 版面设计</h3>
     <p><strong style="color:var(--corn-gold)">正面：</strong>铁锅炖大鹅/排骨锅实拍大图 + "山野间·铁锅炖"品牌名 + 开业优惠信息（全场88折）</p>
     <p><strong style="color:var(--corn-gold)">背面：</strong>双二维码并排（码①团购领券 / 码②加群领¥5红包）+ 下方优惠栏（开业满减+赠菜信息）</p>
-    <p><strong style="color:var(--corn-gold)">文案：</strong>"山野食材·柴火现炖"、"人均¥60吃饱吃好"、"二楼包间·家庭聚餐首选"</p>
+    <p><strong style="color:var(--corn-gold)">文案：</strong>"山野食材·柴火现炖"、"人均¥80吃好"、"二楼包间·家庭聚餐首选"</p>
   </div>
 </section>
 
@@ -707,7 +697,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 <section class="section" id="module4">
   <div class="section-header" style="opacity:0">
     <div class="section-number">04 / 17</div>
-    <h2>大众点评团购设计</h2>
+    <h2 class="gradient-text">大众点评团购设计</h2>
     <p>阶梯套餐 · 引流爆品 · 限时限量</p>
   </div>
   <div class="card" style="opacity:0">
@@ -715,9 +705,9 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     <div class="table-wrap">
       <table class="data">
         <tr><th>套餐名称</th><th>价格</th><th>内容</th><th>定位</th></tr>
-        <tr><td>🥇 双人尝鲜套餐</td><td><strong style="color:var(--corn-gold)">¥68</strong></td><td>铁锅炖大鹅(小份)+玉米饼+凉菜</td><td>引流爆品</td></tr>
-        <tr><td>🥈 四人聚餐套餐</td><td><strong style="color:var(--corn-gold)">¥128</strong></td><td>铁锅炖排骨+大鹅拼+配菜+主食</td><td>主力走量</td></tr>
-        <tr><td>🥉 六人欢聚套餐</td><td><strong style="color:var(--corn-gold)">¥198</strong></td><td>铁锅炖大鹅+排骨+配菜4份+贴饼子</td><td>利润款</td></tr>
+        <tr><td>🥇 双人尝鲜套餐</td><td><strong style="color:var(--corn-gold)">¥99</strong></td><td>铁锅炖大鹅(小份)+玉米饼+凉菜</td><td>引流爆品</td></tr>
+        <tr><td>🥈 四人聚餐套餐</td><td><strong style="color:var(--corn-gold)">¥198</strong></td><td>铁锅炖排骨+大鹅拼+配菜+主食</td><td>主力走量</td></tr>
+        <tr><td>🥉 六人欢聚套餐</td><td><strong style="color:var(--corn-gold)">¥298</strong></td><td>铁锅炖大鹅+排骨+配菜4份+贴饼子</td><td>利润款</td></tr>
       </table>
     </div>
     <p style="margin-top:1rem;color:rgba(255,245,230,0.6)">⏰ 开业首月限量500份 · 核销有效期30天</p>
@@ -764,7 +754,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 <section class="section" id="module6">
   <div class="section-header" style="opacity:0">
     <div class="section-number">06 / 17</div>
-    <h2>开业现场活动设计</h2>
+    <h2 class="gradient-text">开业现场活动设计</h2>
     <p>基础活动 + 专项A/B/C</p>
   </div>
   <div class="card" style="opacity:0">
@@ -777,7 +767,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">B</span> 复购锁定</h3>
-      <p>消费满¥150赠¥30代金券<br>下次到店可用，有效期30天</p>
+      <p>消费满¥200赠¥40代金券<br>下次到店可用，有效期30天</p>
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">C</span> 日常引流</h3>
@@ -891,11 +881,11 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">📄</span> DM派发</h3>
-      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"东北铁锅炖新店开业，扫码领券¥68双人餐超划算！二楼还有包间，家庭聚餐正合适！"</p>
+      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"东北铁锅炖新店开业，扫码领券¥99双人餐超划算！二楼还有包间，家庭聚餐正合适！"</p>
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">🎫</span> 团购引导</h3>
-      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"大众点评有团购券，¥68双人餐更划算，扫码看看~"</p>
+      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"大众点评有团购券 ¥99双人餐更划算，扫码看看~"</p>
     </div>
   </div>
 </section>
@@ -936,7 +926,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
       <table class="data">
         <tr><th>场景</th><th>话术</th></tr>
         <tr><td>核销时</td><td>"您有团购券吗？核销码给我扫一下~"</td></tr>
-        <tr><td>赠券时</td><td>"您消费满了¥150，送您一张¥30代金券，下次来用！"</td></tr>
+        <tr><td>赠券时</td><td>"您消费满了¥200，送您一张¥40代金券，下次来用！"</td></tr>
         <tr><td>加群时</td><td>"扫这个码进群，领¥5红包~以后群里还有各种福利！"</td></tr>
         <tr><td>离别时</td><td>"铁锅炖炖得久，下次提前群里说一声，我们提前备好！"</td></tr>
       </table>
@@ -945,7 +935,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
   <div class="card" style="opacity:0">
     <h3><span class="num">🪧</span> 台卡配置</h3>
     <ul>
-      <li>📌 满¥150赠¥30代金券台卡（每桌摆放）</li>
+      <li>📌 满¥200赠¥40代金券台卡（每桌摆放）</li>
       <li>📌 加群领¥5红包台卡（收银台+每桌）</li style="list-style:
       <li>📌 开业活动台卡（门口+收银台）</li>
     </ul>
@@ -996,7 +986,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 <section class="section" id="module15">
   <div class="section-header" style="opacity:0">
     <div class="section-number">15 / 17</div>
-    <h2>KPI目标</h2>
+    <h2 class="gradient-text">KPI目标</h2>
     <p>可量化 · 可追踪 · 可达成</p>
   </div>
   <div class="kpi-grid">
@@ -1012,7 +1002,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     </div>
     <div class="kpi-card" style="opacity:0">
       <div class="kpi-icon">💰</div>
-      <div class="kpi-value">¥8-10万</div>
+      <div class="kpi-value">¥12-15万</div>
       <div class="kpi-label">首月营收</div>
     </div>
     <div class="kpi-card" style="opacity:0">
@@ -1057,7 +1047,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
     <ul>
       style="font-weight:600;color:var(--corn-gold)">"山野"品牌自带原生态食材联想</li>
       <li>170㎡双层空间 + 二楼3个包间，满足聚餐宴请需求</li>
-      <li>人均¥60适中，新店开业优惠力度大</li>
+      <li>人均¥80适中，新店开业优惠力度大</li>
       <li>围挡+DM+团购+私域全链路覆盖，竞品多以传统方式运营</li>
     </ul>
   </div>
@@ -1067,7 +1057,7 @@ table.data tr:hover td { background: rgba(212,160,48,0.05); }
 <section class="section" id="module17">
   <div class="section-header" style="opacity:0">
     <div class="section-number">17 / 17</div>
-    <h2>总结</h2>
+    <h2 class="gradient-text">总结</h2>
     <p>稳扎稳打 · 开业即爆</p>
   </div>
   class="card" style="opacity:0;text-align:center;border:2px solid rgba(212,160,48,0.3)">
@@ -1134,23 +1124,6 @@ document.querySelectorAll('.section-header, .card, .kpi-card, .competitor-card, 
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
-
-// ===== Password Unlock =====
-function unlockStrategy() {
-  const input = document.getElementById('pwdInput');
-  const overlay = document.getElementById('strategyLock');
-  const error = document.getElementById('pwdError');
-  if (input.value === '888') {
-    overlay.classList.add('unlocked');
-    error.classList.remove('show');
-    input.blur();
-  } else {
-    error.classList.add('show');
-    input.value = '';
-    input.focus();
-    setTimeout(() => error.classList.remove('show'), 2000);
-  }
-}
 
 // ===== Active Nav Highlight =====
 const navLinks = document.querySelectorAll('.nav a');
