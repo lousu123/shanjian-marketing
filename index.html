@@ -8,19 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
 :root {
-  --iron-black: #2D4A3A;
-  --fire-orange: #4A7C59;
-  --fire-red: #6B8F71;
-  --corn-gold: #8B7355;
-  --wood-brown: #A0896E;
-  --cream: #F0EDE5;
-  --cream-dark: #E8E0D5;
-  --dark: #2D4A3A;
-  --text: #2D2416;
-  --text-light: #8A7A6A;
-  --leaf-green: #5B8C5A;
-  --mist-white: #F5F2EC;
-  --shadow: rgba(45,74,58,0.15);
+  --dark: #2A4A3A;
+  --forest: #5B8C5A;
+  --spring: #7BC67E;
+  --snow: #F5F7F0;
+  --wood: #C4A882;
+  --sage: #D8E8D5;
+  --text: #2D3A2D;
+  --text-light: #7A8A7A;
+  --shadow: rgba(91,140,90,0.1);
   --radius: 16px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -45,27 +41,28 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #1A3A2A 0%, #2D4A3A 30%, #3D5B4A 60%, #1A3A2A 100%);
+  background: linear-gradient(135deg, #5B8C5A 0%, #8BB89E 40%, #D8E8D5 70%, #F5F7F0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 .hero-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('https://s3plus.sankuai.com/aigc-public-resources/gemini-image-generate/6a097c0b-e4b022e1-fca7e9bddb1-1779006487832.png') center/cover no-repeat;
-  opacity: 0.25;
-  filter: brightness(0.6) saturate(0.8);
+  background: linear-gradient(135deg, rgba(42,74,58,0.9), rgba(91,140,90,0.6), rgba(123,198,126,0.3));
+  opacity: 0.2;
+  filter: brightness(0.8) saturate(1.0);
 }
 .flame-particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--corn-gold);
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
+  opacity: 0.4;
   animation: floatUp linear infinite;
-  opacity: 0.6;
 }
 @keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
   100% { transform: translateY(-100vh) scale(0); opacity: 0; }
 }
 .hero-content {
@@ -76,9 +73,9 @@ body {
 }
 .hero-badge {
   display: inline-block;
-  background: rgba(204,74,32,0.2);
-  border: 1px solid var(--fire-orange);
-  color: var(--fire-orange);
+  background: rgba(91,140,90,0.2);
+  border: 1px solid var(--forest);
+  color: var(--forest);
   padding: 0.3rem 1.2rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -89,20 +86,20 @@ body {
 .hero-title {
   font-family: 'Ma Shan Zheng', cursive;
   font-size: clamp(3rem, 8vw, 6rem);
-  color: var(--cream);
-  text-shadow: 0 4px 30px rgba(204,74,32,0.4);
+  color: var(--snow);
+  text-shadow: 0 4px 30px rgba(91,140,90,0.4);
   margin-bottom: 0.5rem;
   letter-spacing: 6px;
 }
 .hero-sub {
   font-size: clamp(1rem, 2.5vw, 1.8rem);
-  color: var(--corn-gold);
+  color: var(--wood);
   font-weight: 300;
   letter-spacing: 8px;
   margin-bottom: 2rem;
 }
 .hero-desc {
-  color: rgba(255,245,230,0.7);
+  color: rgba(245,247,240,0.7)7);
   font-size: 1rem;
   max-width: 500px;
   margin: 0 auto 2rem;
@@ -111,16 +108,16 @@ body {
 .hero-cta {
   display: inline-block;
   padding: 0.8rem 2.5rem;
-  background: linear-gradient(135deg, var(--fire-orange), var(--fire-red));
-  color: var(--cream);
+  background: linear-gradient(135deg, var(--forest), var(--spring));
+  color: var(--snow);
   border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(204,74,32,0.3);
+  box-shadow: 0 4px 20px rgba(91,140,90,0.3);
 }
-.hero-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(204,74,32,0.5); }
+.hero-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(91,140,90,0.5); }
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -131,7 +128,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(255,245,230,0.4);
+  color: rgba(245,247,240,0.7)4);
   font-size: 0.75rem;
   letter-spacing: 2px;
   animation: bounceDown 2s ease-in-out infinite;
@@ -140,7 +137,7 @@ body {
   0%,100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(10px); }
 }
-.scroll-indicator span { display: block; width: 1px; height: 30px; background: rgba(255,245,230,0.3); }
+.scroll-indicator span { display: block; width: 1px; height: 30px; background: rgba(245,247,240,0.7)3); }
 
 /* ===== NAV ===== */
 .nav {
@@ -150,7 +147,7 @@ body {
   background: rgba(26,13,8,0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(204,74,32,0.1);
+  border-bottom: 1px solid rgba(91,140,90,0.1);
   transition: all 0.5s ease;
   padding: 0 1rem;
 }
@@ -172,13 +169,13 @@ body {
 .nav-brand {
   font-family: 'Ma Shan Zheng', cursive;
   font-size: 1.2rem;
-  color: var(--corn-gold);
+  color: var(--wood);
   white-space: nowrap;
   margin-right: 1rem;
   flex-shrink: 0;
 }
 .nav a {
-  color: rgba(255,245,230,0.6);
+  color: rgba(245,247,240,0.7)6);
   text-decoration: none;
   font-size: 0.75rem;
   padding: 0.3rem 0.6rem;
@@ -187,7 +184,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
 }
-.nav a:hover, .nav a.active { color: var(--corn-gold); background: rgba(139,115,85,0.1); }
+.nav a:hover, .nav a.active { color: var(--wood); background: rgba(196,168,130,0.1); }
 
 /* ===== SECTION ===== */
 .section {
@@ -203,8 +200,8 @@ body {
   display: inline-block;
   font-family: 'Noto Serif SC', serif;
   font-size: 0.8rem;
-  color: var(--fire-orange);
-  border: 1px solid var(--fire-orange);
+  color: var(--forest);
+  border: 1px solid var(--forest);
   padding: 0.2rem 0.8rem;
   border-radius: 4px;
   letter-spacing: 2px;
@@ -213,7 +210,7 @@ body {
 .section-header h2 {
   font-family: 'Noto Serif SC', serif;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--cream);
+  color: var(--snow);
   margin-bottom: 0.8rem;
 }
 .section-header p {
@@ -226,17 +223,17 @@ body {
 
 /* ===== CARDS ===== */
 .card {
-  background: linear-gradient(135deg, rgba(255,245,230,0.05), rgba(255,245,230,0.02));
-  border: 1px solid rgba(139,115,85,0.15);
+  background: rgba(245,247,240,0.85);
+  border: 1px solid rgba(196,168,130,0.15);
   border-radius: var(--radius);
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: all 0.4s ease;
 }
-.card:hover { border-color: rgba(204,74,32,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(204,74,32,0.08); }
+.card:hover { border-color: rgba(91,140,90,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(91,140,90,0.08); }
 .card h3 {
   font-family: 'Noto Serif SC', serif;
-  color: var(--corn-gold);
+  color: var(--wood);
   font-size: 1.1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -248,15 +245,15 @@ body {
   align-items: center;
   justify-content: center;
   width: 28px; height: 28px;
-  background: var(--fire-orange);
-  color: var(--cream);
+  background: var(--forest);
+  color: var(--snow);
   border-radius: 50%;
   font-size: 0.75rem;
   font-family: 'Noto Sans SC', sans-serif;
   flex-shrink: 0;
 }
 .card p, .card li {
-  color: rgba(255,245,230,0.75);
+  color: rgba(245,247,240,0.7)75);
   font-size: 0.9rem;
   line-height: 1.8;
 }
@@ -273,9 +270,9 @@ body {
   margin: 2rem 0;
 }
 .strategy-item {
-  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
-  color: var(--cream);
-  padding: 0.rem var(--radius-r(--radius);
+  background: linear-gradient(135deg, var(--spring), var(--forest));
+  color: var(--snow);
+  padding: 0.8rem 1.5rem;
   padding: 1rem 1.5rem;
   font-weight: 600;
   font-size: 0.9rem;
@@ -285,9 +282,9 @@ body {
   cursor: default;
   animation: fadeInUp 0.6s ease both;
 }
-.strategy-item:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 25px rgba(204,74,32,0.3); }
+.strategy-item:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 25px rgba(91,140,90,0.3); }
 .strategy-arrow {
-  color: var(--corn-gold);
+  color: var(--wood);
   font-size: 1.5rem;
   font-weight: 300;
 }
@@ -305,8 +302,8 @@ body {
   font-weight: 500;
 }
 .tag-red { background: rgba(139,26,26,0.3); color: #e06060; border: 1px solid rgba(139,26,26,0.4); }
-.tag-gold { background: rgba(139,115,85,0.2); color: var(--corn-gold);
-  border: 1px solid rgba(139,115,85,0.4); }
+.tag-gold { background: rgba(196,168,130,0.2); color: var(--wood);
+  border: 1px solid rgba(196,168,130,0.4); }
 
 /* ===== TABLE ===== */
 .table-wrap {
@@ -319,8 +316,8 @@ table.data {
   font-size: 0.85rem;
 }
 table.data th {
-  background: rgba(204,74,32,0.2);
-  color: var(--corn-gold);
+  background: rgba(91,140,90,0.2);
+  color: var(--wood);
   padding: 0.8rem 1rem;
   text-align: left;
   font-weight: 600;
@@ -328,10 +325,10 @@ table.data th {
 }
 table.data td {
   padding: 0.7rem 1rem;
-  color: rgba(255,245,230,0.75);
-  border-bottom: 1px solid rgba(139,115,85,0.08);
+  color: rgba(245,247,240,0.7)75);
+  border-bottom: 1px solid rgba(196,168,130,0.08);
 }
-table.data tr:hover td { background: rgba(139,115,85,0.05); }
+table.data tr:hover td { background: rgba(196,168,130,0.05); }
 
 /* ===== BUDGET BAR ===== */
 .budget-chart {
@@ -347,20 +344,20 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
 }
 .budget-label {
   min-width: 180px;
-  color: rgba(255,245,230,0.7);
+  color: rgba(245,247,240,0.7)7);
   font-size: 0.85rem;
 }
 .budget-bar-wrap {
   flex: 1;
   height: 28px;
-  background: rgba(255,245,230,0.05);
+  background: rgba(245,247,240,0.7)05);
   border-radius: 14px;
   overflow: hidden;
   position: relative;
 }
 .budget-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--fire-orange), var(--corn-gold));
+  background: linear-gradient(90deg, var(--forest), var(--wood));
   border-radius: 14px;
   transition: width 1.5s ease;
   position: relative;
@@ -376,12 +373,12 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
 }
 .budget-total {
   text-align: right;
-  color: var(--corn-gold);
+  color: var(--wood);
   font-size: 1.1rem;
   font-weight: 700;
   margin-top: 0.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(139,115,85,0.15);
+  border-top: 1px solid rgba(196,168,130,0.15);
 }
 
 /* ===== KPI CARDS ===== */
@@ -392,17 +389,17 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   margin: 1.5rem 0;
 }
 .kpi-card {
-  background: linear-gradient(135deg, rgba(139,115,85,0.08), rgba(74,124,89,0.05));
-  border: 1px solid rgba(139,115,85,0.15);
+  background: linear-gradient(135deg, rgba(196,168,130,0.08), rgba(91,140,90,0.05));
+  border: 1px solid rgba(196,168,130,0.15);
   border-radius: var(--radius);
   padding: 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
 }
-.kpi-card:hover { border-color: var(--fire-orange); transform: translateY(-4px); }
+.kpi-card:hover { border-color: var(--forest); transform: translateY(-4px); }
 .kpi-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-.kpi-value { font-size: 1.8rem; font-weight: 700; color: var(--corn-gold); }
-.kpi-label { color: rgba(255,245,230,0.6); font-size: 0.8rem; margin-top: 0.3rem; }
+.kpi-value { font-size: 1.8rem; font-weight: 700; color: var(--wood); }
+.kpi-label { color: rgba(245,247,240,0.7)6); font-size: 0.8rem; margin-top: 0.3rem; }
 
 /* ===== TIMELINE ===== */
 .timeline {
@@ -417,7 +414,7 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--fire-orange), var(--corn-gold));
+  background: linear-gradient(to bottom, var(--forest), var(--wood));
 }
 .timeline-item {
   position: relative;
@@ -430,12 +427,12 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   top: 6px;
   width: 14px;
   height: 14px;
-  background: var(--fire-orange);
+  background: var(--forest);
   border: 2px solid var(--dark);
   border-radius: 50%;
 }
-.timeline-item h4 { color: var(--corn-gold); font-size: 0.95rem; margin-bottom: 0.3rem; }
-.timeline-item p p { color: rgba(255,245,230,0.7); font-size: 0.85rem; line-height: 1.6; }
+.timeline-item h4 { color: var(--wood); font-size: 0.95rem; margin-bottom: 0.3rem; }
+.timeline-item p p { color: rgba(245,247,240,0.7)7); font-size: 0.85rem; line-height: 1.6; }
 
 /* ===== COMPETITOR ===== */
 .competitor-grid {
@@ -445,16 +442,16 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   margin: 1.5rem 0;
 }
 .competitor-card {
-  border: 1px solid rgba(139,115,85,0.12);
+  border: 1px solid rgba(196,168,130,0.12);
   border-radius: var(--radius);
   padding: 1.5rem;
-  background: rgba(255,245,230,0.02);
+  background: rgba(245,247,240,0.7)02);
   transition: all 0.3s ease;
 }
-.competitor-card:hover { border-color: var(--fire-orange); transform: translateY(-2px); }
-.competitor-name { font-size: 1rem; color: var(--cream); font-weight: 600; }
-.competitor-score { color: var(--corn-gold); font-size: 0.9rem; margin: 0.3rem 0; }
-.competitor-desc { color: rgba(255,245,230,0.6); font-size: 0.8rem; line-height: 1.6; }
+.competitor-card:hover { border-color: var(--forest); transform: translateY(-2px); }
+.competitor-name { font-size: 1rem; color: var(--snow); font-weight: 600; }
+.competitor-score { color: var(--wood); font-size: 0.9rem; margin: 0.3rem 0; }
+.competitor-desc { color: rgba(245,247,240,0.7)6); font-size: 0.8rem; line-height: 1.6; }
 
 /* ===== 自然山野动效 ===== */
 @keyframes floatLeaf {
@@ -464,8 +461,8 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   100% { transform: translateY(-100vh) rotate(360deg) scale(0.4); opacity: 0; }
 }
 @keyframes leafGlow {
-  0%,100% { text-shadow: 0 0 15px rgba(74,124,89,0.15), 0 0 30px rgba(74,124,89,0.05); }
-  50% { text-shadow: 0 0 25px rgba(74,124,89,0.35), 0 0 50px rgba(74,124,89,0.1); }
+  0%,100% { text-shadow: 0 0 15px rgba(91,140,90,0.12), 0 0 30px rgba(91,140,90,0.03); }
+  50% { text-shadow: 0 0 25px rgba(91,140,90,0.3), 0 0 50px rgba(91,140,90,0.08); }
 }
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -473,16 +470,16 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   100% { background-position: 0% 50%; }
 }
 @keyframes cardGlow {
-  0%,100% { box-shadow: 0 2px 12px rgba(74,124,89,0.06); }
-  50% { box-shadow: 0 8px 28px rgba(74,124,89,0.1); }
+  0%,100% { box-shadow: 0 2px 12px rgba(91,140,90,0.04); }
+  50% { box-shadow: 0 8px 24px rgba(91,140,90,0.08); }
 }
 @keyframes borderPulse {
-  0% { border-color: rgba(74,124,89,0.1); }
-  50% { border-color: rgba(74,124,89,0.3); }
-  100% { border-color: rgba(74,124,89,0.1); }
+  0% { border-color: rgba(91,140,90,0.08); }
+  50% { border-color: rgba(91,140,90,0.25); }
+  100% { border-color: rgba(91,140,90,0.08); }
 }
 .gradient-text {
-  background: linear-gradient(135deg, #4A7C59, #6B8F71, #4A7C59);
+  background: linear-gradient(135deg, #5B8C5A, #7BC67E, #A8D8EA);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -491,6 +488,7 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
 }
 .nature-text {
   animation: leafGlow 3s ease-in-out infinite;
+  color: var(--forest) !important;
 }
 .leaf-container {
   position: fixed;
@@ -517,27 +515,28 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
 .leaf:nth-child(10) { left: 72%; animation-delay: 2s; font-size: 0.9rem; }
 
 .card {
-  border: 1px solid rgba(74,124,89,0.1);
+  border: 1px solid rgba(91,140,90,0.08);
   animation: cardGlow 4s ease-in-out infinite;
   transition: all 0.4s ease;
-  background: linear-gradient(135deg, rgba(240,237,229,0.95), rgba(245,242,236,0.95)) !important;
+  background: var(--snow) !important;
 }
 .card:hover {
-  border-color: var(--fire-orange);
+  border-color: var(--forest);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(74,124,89,0.15);
+  box-shadow: 0 12px 40px rgba(91,140,90,0.12);
 }
 
 .section-number {
   animation: leafGlow 3s ease-in-out infinite;
+  color: var(--forest) !important;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   padding: 3rem 1.5rem;
-  border-top: 1px solid rgba(139,115,85,0.1);
-  color: rgba(255,245,230,0.3);
+  border-top: 1px solid rgba(196,168,130,0.1);
+  color: rgba(245,247,240,0.7)3);
   font-size: 0.8rem;
 }
 
@@ -571,7 +570,6 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div class="hero-content" style="opacity:0">
     <div class="hero-badge">🌿 塘沽新店 · 装修中</div>
     <h1 class="hero-title nature-text">山野间</h1>
-<h1 class="hero-title nature-text">山野间</h1>
     <div class="hero-sub nature-text">铁锅炖</div>
     <p class="hero-desc">山野食材 · 柴火现炖 · 东北老味道<br>塘沽杭州道 · 170㎡双层空间 · 二楼包间</p>
     <a href="#module1" class="hero-cta">🌿 查看完整方案</a>
@@ -616,12 +614,12 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div class="card" style="opacity:0">
     <h3><span class="num">📍</span> 门店档案</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--corn-gold)">店名</strong><br><span style="color:rgba(255,245,230,0.7)">山野间铁锅炖（塘沽店）</span></div>
-      <div><strong style="color:var(--corn-gold)">品类</strong><br><span style="color:rgba(255,245,230,0.7)">东北菜 · 铁锅炖</span></div>
-      <div><strong style="color:var(--corn-gold)">位置</strong><br><span style="color:rgba(255,245,230,0.7)">塘沽杭州道·贝迪幼儿园东侧</span></div>
-      <div><strong style="color:var(--corn-gold)">面积</strong><br><span style="color:rgba(255,245,230,0.7)">约170㎡ · 一楼8散台 · 二楼3包间</span></div>
-      <div><strong style="color:var(--corn-gold)">状态</strong><br><span style="color:rgba(255,245,230,0.7)">装修中 · 暂无星级</span></div>
-      <div><strong style="color:var(--corn-gold)">人均</strong><br><span style="color:rgba(255,245,230,0.7)">预计 ¥80</span></div>
+      <div><strong style="color:var(--wood)">店名</strong><br><span style="color:rgba(245,247,240,0.7)7)">山野间铁锅炖（塘沽店）</span></div>
+      <div><strong style="color:var(--wood)">品类</strong><br><span style="color:rgba(245,247,240,0.7)7)">东北菜 · 铁锅炖</span></div>
+      <div><strong style="color:var(--wood)">位置</strong><br><span style="color:rgba(245,247,240,0.7)7)">塘沽杭州道·贝迪幼儿园东侧</span></div>
+      <div><strong style="color:var(--wood)">面积</strong><br><span style="color:rgba(245,247,240,0.7)7)">约170㎡ · 一楼8散台 · 二楼3包间</span></div>
+      <div><strong style="color:var(--wood)">状态</strong><br><span style="color:rgba(245,247,240,0.7)7)">装修中 · 暂无星级</span></div>
+      <div><strong style="color:var(--wood)">人均</strong><br><span style="color:rgba(245,247,240,0.7)7)">预计 ¥80</span></div>
     </div>
   </div>
   <div class="card" style="opacity:0">
@@ -630,7 +628,7 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   </div>
   <div class="card" style="opacity:0">
     <h3><span class="num">⭐</span> 核心目标</h3>
-    <p>开业即爆，首月建立口碑，冲刺<strong style="color:var(--corn-gold)">滨海新区东北菜热门榜</strong>。以"山野食材·柴火现炖"为核心差异化，围挡蓄水+开业引爆+私域锁客三步走，稳扎稳打做成塘沽铁锅炖口碑店。</p>
+    <p>开业即爆，首月建立口碑，冲刺<strong style="color:var(--wood)">滨海新区东北菜热门榜</strong>。以"山野食材·柴火现炖"为核心差异化，围挡蓄水+开业引爆+私域锁客三步走，稳扎稳打做成塘沽铁锅炖口碑店。</p>
   </div>
 </section>
 
@@ -680,17 +678,17 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div class="card" style="opacity:0">
     <h3><span class="num">📐</span> DM单规格</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--corn-gold)">尺寸</strong><br><span style="color:rgba(255,245,230,0.7)">A5（148×210mm）双面</span></div>
-      <div><strong style="color:var(--corn-gold)">纸质</strong><br><span style="color:rgba(255,245,230,0.7)">128g铜版纸</span></div>
-      <div><strong style="color:var(--corn-gold)">印刷量</strong><br><span style="color:rgba(255,245,230,0.7)">5,000张</span></div>
+      <div><strong style="color:var(--wood)">尺寸</strong><br><span style="color:rgba(245,247,240,0.7)7)">A5（148×210mm）双面</span></div>
+      <div><strong style="color:var(--wood)">纸质</strong><br><span style="color:rgba(245,247,240,0.7)7)">128g铜版纸</span></div>
+      <div><strong style="color:var(--wood)">印刷量</strong><br><span style="color:rgba(245,247,240,0.7)7)">5,000张</span></div>
     </div>
  ️  </div>
   </div>
   <div class="card" style="opacity:0">
     <h3><span class="num">🎨</span> 版面设计</h3>
-    <p><strong style="color:var(--corn-gold)">正面：</strong>铁锅炖大鹅/排骨锅实拍大图 + "山野间·铁锅炖"品牌名 + 开业优惠信息（全场88折）</p>
-    <p><strong style="color:var(--corn-gold)">背面：</strong>双二维码并排（码①团购领券 / 码②加群领¥5红包）+ 下方优惠栏（开业满减+赠菜信息）</p>
-    <p><strong style="color:var(--corn-gold)">文案：</strong>"山野食材·柴火现炖"、"人均¥80吃好"、"二楼包间·家庭聚餐首选"</p>
+    <p><strong style="color:var(--wood)">正面：</strong>铁锅炖大鹅/排骨锅实拍大图 + "山野间·铁锅炖"品牌名 + 开业优惠信息（全场88折）</p>
+    <p><strong style="color:var(--wood)">背面：</strong>双二维码并排（码①团购领券 / 码②加群领¥5红包）+ 下方优惠栏（开业满减+赠菜信息）</p>
+    <p><strong style="color:var(--wood)">文案：</strong>"山野食材·柴火现炖"、"人均¥80吃好"、"二楼包间·家庭聚餐首选"</p>
   </div>
 </section>
 
@@ -706,12 +704,12 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
     <div class="table-wrap">
       <table class="data">
         <tr><th>套餐名称</th><th>价格</th><th>内容</th><th>定位</th></tr>
-        <tr><td>🥇 双人尝鲜套餐</td><td><strong style="color:var(--corn-gold)">¥99</strong></td><td>铁锅炖大鹅(小份)+玉米饼+凉菜</td><td>引流爆品</td></tr>
-        <tr><td>🥈 四人聚餐套餐</td><td><strong style="color:var(--corn-gold)">¥198</strong></td><td>铁锅炖排骨+大鹅拼+配菜+主食</td><td>主力走量</td></tr>
-        <tr><td>🥉 六人欢聚套餐</td><td><strong style="color:var(--corn-gold)">¥298</strong></td><td>铁锅炖大鹅+排骨+配菜4份+贴饼子</td><td>利润款</td></tr>
+        <tr><td>🥇 双人尝鲜套餐</td><td><strong style="color:var(--wood)">¥99</strong></td><td>铁锅炖大鹅(小份)+玉米饼+凉菜</td><td>引流爆品</td></tr>
+        <tr><td>🥈 四人聚餐套餐</td><td><strong style="color:var(--wood)">¥198</strong></td><td>铁锅炖排骨+大鹅拼+配菜+主食</td><td>主力走量</td></tr>
+        <tr><td>🥉 六人欢聚套餐</td><td><strong style="color:var(--wood)">¥298</strong></td><td>铁锅炖大鹅+排骨+配菜4份+贴饼子</td><td>利润款</td></tr>
       </table>
     </div>
-    <p style="margin-top:1rem;color:rgba(255,245,230,0.6)">⏰ 开业首月限量500份 · 核销有效期30天</p>
+    <p style="margin-top:1rem;color:rgba(245,247,240,0.7)6)">⏰ 开业首月限量500份 · 核销有效期30天</p>
   </div>
 </section>
 
@@ -741,13 +739,13 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
     <div class="table-wrap">
       <table class="data">
         <tr><th>时段</th><th>周一</th><th>周二</th></tr>
-        <tr><td><strong>10:00</st<strong style="color:var(--corn-gold)">10:00</strong></td>
+        <tr><td><strong>10:00</st<strong style="color:var(--wood)">10:00</strong></td>
         <td>早安红包+特价锅预告</td><td>红包+双倍积分</td><td>红包+会员日</td><td>红包+新品试吃</td><td>红包+周末福利</td><td>红包+周末活动</td><td>红包+周总结</td></tr>
         <tr><td><strong>16:00</strong></td>
         <td>特价锅🫕</td><td>双倍积分🔥</td><td>会员日🎂</td><td>新品预告✨</td><td>周末预告🎯</td><td>今日活动📢</td><td>下周预告📋</td></tr>
       </table>
     </div>
-    <p style="margin-top:0.5rem;color:rgba(255,245,230,0.5);font-size:0.8rem">成本测算：¥5/人 × 预计首月500人 = ¥2,500</p>
+    <p style="margin-top:0.5rem;color:rgba(245,247,240,0.7)5);font-size:0.8rem">成本测算：¥5/人 × 预计首月500人 = ¥2,500</p>
   </div>
 </section>
 
@@ -861,9 +859,9 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div class="card" style="opacity:0">
     <h3><span class="num">🗺️</span> 派发计划</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--corn-gold)">总量</strong><br><span style="color:rgba(255,245,230,0.7)">5,000张</span></div>
-      <div><strong style="color:var(--corn-gold)">地点</strong><br><span style="color:rgba(255,245,230,0.7)">贝迪幼儿园门口(放学高峰) · 杭州道菜市场 · 津塘路沿街商铺 · 贻成园/吉安里/苏州里社区</span></div>
-      <div><strong style="color:var(--corn-gold)">时间</strong><br><span style="color:rgba(255,245,230,0.7)">开业前5天集中派发 + 开业期间续发</span></div>
+      <div><strong style="color:var(--wood)">总量</strong><br><span style="color:rgba(245,247,240,0.7)7)">5,000张</span></div>
+      <div><strong style="color:var(--wood)">地点</strong><br><span style="color:rgba(245,247,240,0.7)7)">贝迪幼儿园门口(放学高峰) · 杭州道菜市场 · 津塘路沿街商铺 · 贻成园/吉安里/苏州里社区</span></div>
+      <div><strong style="color:var(--wood)">时间</strong><br><span style="color:rgba(245,247,240,0.7)7)">开业前5天集中派发 + 开业期间续发</span></div>
     </div>
   </div>
 </section>
@@ -878,15 +876,15 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
     <div class="card" style="opacity:0">
       <h3><span class="num">🏗️</span> 围挡场景</h3>
-      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"您好！山野间铁锅炖马上开业了，扫码进群领¥5红包，开业还能享优惠！"</p>
+      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"您好！山野间铁锅炖马上开业了，扫码进群领¥5红包，开业还能享优惠！"</p>
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">📄</span> DM派发</h3>
-      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"东北铁锅炖新店开业，扫码领券¥99双人餐超划算！二楼还有包间，家庭聚餐正合适！"</p>
+      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"东北铁锅炖新店开业，扫码领券¥99双人餐超划算！二楼还有包间，家庭聚餐正合适！"</p>
     </div>
     <div class="card" style="opacity:0">
       <h3><span class="num">🎫</span> 团购引导</h3>
-      <p style="color:rgba(255,245,230,0.7);line-height:1.8">"大众点评有团购券 ¥99双人餐更划算，扫码看看~"</p>
+      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"大众点评有团购券 ¥99双人餐更划算，扫码看看~"</p>
     </div>
   </div>
 </section>
@@ -1046,7 +1044,7 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
   <div class="card" style="opacity:0;margin-top:1rem">
     <h3><span class="num">🏔️</span> 山野间差异化优势</h3>
     <ul>
-      style="font-weight:600;color:var(--corn-gold)">"山野"品牌自带原生态食材联想</li>
+      style="font-weight:600;color:var(--wood)">"山野"品牌自带原生态食材联想</li>
       <li>170㎡双层空间 + 二楼3个包间，满足聚餐宴请需求</li>
       <li>人均¥80适中，新店开业优惠力度大</li>
       <li>围挡+DM+团购+私域全链路覆盖，竞品多以传统方式运营</li>
@@ -1061,14 +1059,14 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
     <h2 class="gradient-text">总结</h2>
     <p>稳扎稳打 · 开业即爆</p>
   </div>
-  class="card" style="opacity:0;text-align:center;border:2px solid rgba(139,115,85,0.3)">
-    <p style="font-size:1.1rem;line-height:2;color:rgba(255,245,230,0.85)">
-      山野间铁锅炖坐拥<strong style="color:var(--corn-gold)">塘沽成熟社区位置</strong>，<br>
+  class="card" style="opacity:0;text-align:center;border:2px solid rgba(196,168,130,0.3)">
+    <p style="font-size:1.1rem;line-height:2;color:rgba(245,247,240,0.7)85)">
+      山野间铁锅炖坐拥<strong style="color:var(--wood)">塘沽成熟社区位置</strong>，<br>
       170㎡空间+包间配置在同品类中具备竞争力。<br><br>
-      以<strong style="color:var(--fire-orange)">"山野食材·柴火现炖"</strong>为核心差异化，<br>
-      <strong style="color:var(--corn-gold)">围挡蓄水 + DM引流 + 团购拉新 + 私域锁客 + 开业引爆</strong><br>
+      以<strong style="color:var(--forest)">"山野食材·柴火现炖"</strong>为核心差异化，<br>
+      <strong style="color:var(--wood)">围挡蓄水 + DM引流 + 团购拉新 + 私域锁客 + 开业引爆</strong><br>
       五管齐下，开业首月稳扎稳打。<br><br>
-      🎯 冲刺<strong style="color:var(--corn-gold)">滨海新区东北菜热门榜</strong><br>
+      🎯 冲刺<strong style="color:var(--wood)">滨海新区东北菜热门榜</strong><br>
       打造塘沽铁锅炖口碑店！
     </p>
   </div>
@@ -1081,18 +1079,19 @@ table.data tr:hover td { background: rgba(139,115,85,0.05); }
 </footer>
 
 <script>
-// ===== Flame Particles =====
+// ===== Floating Nature Particles =====
 (function() {
   const hero = document.querySelector('.hero');
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 20; i++) {
     const p = document.createElement('div');
     p.className = 'flame-particle';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (8 + Math.random() * 12) + 's';
-    p.style.animationDelay = (Math.random() * 10) + 's';
-    p.style.width = (2 + Math.random() * 4) + 'px';
+    p.style.animationDuration = (12 + Math.random() * 15) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.width = (3 + Math.random() * 5) + 'px';
     p.style.height = p.style.width;
-    p.style.background = ['#8B7355','#4A7C59','#6B8F71','#5B8C5A'][Math.floor(Math.random()*4)];
+    p.style.background = ['#7BC67E','#5B8C5A','#A8D8EA','#C4A882'][Math.floor(Math.random()*4)];
+    p.style.boxShadow = 'none';
     hero.appendChild(p);
   }
 })();
