@@ -2,1155 +2,431 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>山野间铁锅炖 · 开业全渠道运营方案</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<title>山野间铁锅炖 · 全平台运营方案</title>
 <style>
-:root {
-  --dark: #2A4A3A;
-  --forest: #5B8C5A;
-  --spring: #7BC67E;
-  --snow: #F5F7F0;
-  --wood: #C4A882;
-  --sage: #D8E8D5;
-  --text: #2D3A2D;
-  --text-light: #7A8A7A;
-  --shadow: rgba(91,140,90,0.1);
-  --radius: 16px;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Serif SC','PingFang SC','Microsoft YaHei',serif;
+  background:#1a1208;color:#f5ede4;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 20% 50%, rgba(60,40,20,0.6) 0%, transparent 60%),
+                   radial-gradient(ellipse at 80% 50%, rgba(20,60,30,0.4) 0%, transparent 60%);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Noto Sans SC', sans-serif;
-  background: var(--snow);
-  color: var(--text);
-  overflow-x: hidden;
+.wrap{max-width:980px;margin:0 auto;padding:0 12px 60px;position:relative;z-index:1}
+
+/* === HERO === */
+.hero{
+  position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:60px 30px;margin:0 -12px 24px;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://s3plus.sankuai.com/aigc-public-resources/gemini-image-generate/6a0d68c8-e4b08a6a-a1ec675b-1779263688765.png') center/cover no-repeat fixed;
+  filter:brightness(0.45) saturate(1.1) contrast(1.2);
+  z-index:0;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(26,18,8,0.3) 0%, rgba(26,18,8,0.7) 50%, rgba(26,18,8,0.95) 100%);
+  z-index:1;
+}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero-badge{
+  display:inline-block;border:1px solid rgba(245,237,228,0.25);
+  background:rgba(245,237,228,0.08);backdrop-filter:blur(12px);
+  padding:6px 22px;border-radius:30px;font-size:.8rem;letter-spacing:2px;
+  color:#d4b896;margin-bottom:16px;
+}
+.hero h1{
+  font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;
+  background:linear-gradient(135deg,#f5ede4,#d4b896,#f5ede4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:4px;line-height:1.3;
+}
+.hero h1 small{
+  display:block;font-size:clamp(.8rem,2vw,1.1rem);font-weight:400;
+  -webkit-text-fill-color:initial;color:rgba(245,237,228,0.7);
+  margin-top:8px;letter-spacing:6px;
+}
+.hero .sub{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+}
+.hero .sub span{
+  padding:4px 16px;border-radius:20px;font-size:.75rem;
+  background:rgba(245,237,228,0.06);border:1px solid rgba(245,237,228,0.1);
+  color:#d4b896;letter-spacing:1px;
+}
+.hero .scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;opacity:0.4;font-size:1.5rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* === 分隔 === */
+.divider{
+  text-align:center;padding:14px 0;font-size:1.2rem;letter-spacing:12px;
+  color:rgba(212,184,150,0.3);
 }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* === 卡片 === */
+.card{
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(8px);
+  border:1px solid rgba(245,237,228,0.08);border-radius:16px;
+  padding:28px 30px;margin-bottom:18px;
+  transition:all 0.4s ease;
 }
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #5B8C5A 0%, #8BB89E 40%, #D8E8D5 70%, #F5F7F0 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.card:hover{border-color:rgba(212,184,150,0.2);background:rgba(255,255,255,0.06)}
+.card.accent{
+  background:linear-gradient(135deg,rgba(60,40,20,0.3),rgba(20,60,30,0.2));
+  border-color:rgba(212,184,150,0.12);
 }
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(42,74,58,0.9), rgba(91,140,90,0.6), rgba(123,198,126,0.3));
-  opacity: 0.2;
-  filter: brightness(0.8) saturate(1.0);
+.card-title{
+  font-size:1.2rem;font-weight:700;color:#d4b896;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:12px;border-bottom:1px solid rgba(245,237,228,0.06);
 }
-.flame-particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  opacity: 0.4;
-  animation: floatUp linear infinite;
-}
-@keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 0.5; }
-  100% { transform: translateY(-100vh) scale(0); opacity: 0; }
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(91,140,90,0.2);
-  border: 1px solid var(--forest);
-  color: var(--forest);
-  padding: 0.3rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  margin-bottom: 1.5rem;
-  backdrop-filter: blur(4px);
-}
-.hero-title {
-  font-family: 'Ma Shan Zheng', cursive;
-  font-size: clamp(3rem, 8vw, 6rem);
-  color: var(--snow);
-  text-shadow: 0 4px 30px rgba(91,140,90,0.4);
-  margin-bottom: 0.5rem;
-  letter-spacing: 6px;
-}
-.hero-sub {
-  font-size: clamp(1rem, 2.5vw, 1.8rem);
-  color: var(--wood);
-  font-weight: 300;
-  letter-spacing: 8px;
-  margin-bottom: 2rem;
-}
-.hero-desc {
-  color: rgba(245,247,240,0.7)7);
-  font-size: 1rem;
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  line-height: 1.8;
-}
-.hero-cta {
-  display: inline-block;
-  padding: 0.8rem 2.5rem;
-  background: linear-gradient(135deg, var(--forest), var(--spring));
-  color: var(--snow);
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(91,140,90,0.3);
-}
-.hero-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(91,140,90,0.5); }
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(245,247,240,0.7)4);
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  animation: bounceDown 2s ease-in-out infinite;
-}
-@keyframes bounceDown {
-  0%,100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(10px); }
-}
-.scroll-indicator span { display: block; width: 1px; height: 30px; background: rgba(245,247,240,0.7)3); }
-
-/* ===== NAV ===== */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(26,13,8,0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(91,140,90,0.1);
-  transition: all 0.5s ease;
-  padding: 0 1rem;
-}
-.nav.scrolled {
-  background: rgba(26,13,8,0.95);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.6rem 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.nav-inner::-webkit-scrollbar { display: none; }
-.nav-brand {
-  font-family: 'Ma Shan Zheng', cursive;
-  font-size: 1.2rem;
-  color: var(--wood);
-  white-space: nowrap;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
-.nav a {
-  color: rgba(245,247,240,0.7)6);
-  text-decoration: none;
-  font-size: 0.75rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.nav a:hover, .nav a.active { color: var(--wood); background: rgba(196,168,130,0.1); }
-
-/* ===== SECTION ===== */
-.section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 5rem 1.5rem;
-}
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.section-number {
-  display: inline-block;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 0.8rem;
-  color: var(--forest);
-  border: 1px solid var(--forest);
-  padding: 0.2rem 0.8rem;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
-}
-.section-header h2 {
-  font-family: 'Noto Serif SC', serif;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--snow);
-  margin-bottom: 0.8rem;
-}
-.section-header p {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+.card-title .n{
+  display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#8B4513,#A0522D);color:#f5ede4;
+  font-size:.75rem;font-weight:700;
 }
 
-/* ===== CARDS ===== */
-.card {
-  background: rgba(245,247,240,0.85);
-  border: 1px solid rgba(196,168,130,0.15);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.4s ease;
-}
-.card:hover { border-color: rgba(91,140,90,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(91,140,90,0.08); }
-.card h3 {
-  font-family: 'Noto Serif SC', serif;
-  color: var(--wood);
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.card h3 .num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; height: 28px;
-  background: var(--forest);
-  color: var(--snow);
-  border-radius: 50%;
-  font-size: 0.75rem;
-  font-family: 'Noto Sans SC', sans-serif;
-  flex-shrink: 0;
-}
-.card p, .card li {
-  color: rgba(245,247,240,0.7)75);
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
-.card ul { padding-left: 1.2rem; }
-.card li { margin-bottom: 0.4rem; }
+/* 表格 */
+.tw{overflow-x:auto;margin:12px 0;border-radius:10px;border:1px solid rgba(245,237,228,0.06)}
+table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:600px}
+th{background:rgba(139,69,19,0.3);color:#d4b896;padding:10px 12px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid rgba(245,237,228,0.04);color:#e8ddd0;font-size:.8rem}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
+.pr{color:#FF6B35;font-weight:700}
+.prh{color:#FF4500;font-weight:800}
 
-/* ===== STRATEGY FLOW ===== */
-.strategy-flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 2rem 0;
-}
-.strategy-item {
-  background: linear-gradient(135deg, var(--spring), var(--forest));
-  color: var(--snow);
-  padding: 0.8rem 1.5rem;
-  padding: 1rem 1.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-align: center;
-  min-width: 100px;
-  transition: all 0.3s ease;
-  cursor: default;
-  animation: fadeInUp 0.6s ease both;
-}
-.strategy-item:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 25px rgba(91,140,90,0.3); }
-.strategy-arrow {
-  color: var(--wood);
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* 网格 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.gi{background:rgba(255,255,255,0.03);border:1px solid rgba(245,237,228,0.05);border-radius:10px;padding:14px}
+.gi .l{font-size:.7rem;color:#a09080;letter-spacing:.5px}
+.gi .v{font-size:.9rem;font-weight:700;color:#e8ddd0;margin-top:2px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.ki{text-align:center;padding:16px 6px;background:rgba(255,255,255,0.03);border:1px solid rgba(245,237,228,0.05);border-radius:10px}
+.ki .n{font-size:1.2rem;font-weight:800;color:#d4b896}
+.ki .l{font-size:.65rem;color:#a09080;margin-top:2px}
 
-/* ===== TAG ===== */
-.tag {
-  display: inline-block;
-  padding: 0.2rem 0.8rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-.tag-red { background: rgba(139,26,26,0.3); color: #e06060; border: 1px solid rgba(139,26,26,0.4); }
-.tag-gold { background: rgba(196,168,130,0.2); color: var(--wood);
-  border: 1px solid rgba(196,168,130,0.4); }
+/* 功能卡片 */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.fi{padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(245,237,228,0.05);border-radius:10px;text-align:center}
+.fi .ic{font-size:1.6rem}
+.fi .t{font-weight:700;font-size:.82rem;color:#d4b896;margin:4px 0 2px}
+.fi .d{font-size:.72rem;color:#a09080;line-height:1.5}
 
-/* ===== TABLE ===== */
-.table-wrap {
-  overflow-x: auto;
-  margin: 1.5rem 0;
+/* 高亮 */
+.hl{
+  background:linear-gradient(135deg,rgba(139,69,19,0.08),rgba(20,60,30,0.06));
+  border-left:3px solid #d4b896;border-radius:0 10px 10px 0;
+  padding:14px 18px;margin:12px 0;font-size:.85rem;color:#e0d5c8;
 }
-table.data {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-table.data th {
-  background: rgba(91,140,90,0.2);
-  color: var(--wood);
-  padding: 0.8rem 1rem;
-  text-align: left;
-  font-weight: 600;
-  white-space: nowrap;
-}
-table.data td {
-  padding: 0.7rem 1rem;
-  color: rgba(245,247,240,0.7)75);
-  border-bottom: 1px solid rgba(196,168,130,0.08);
-}
-table.data tr:hover td { background: rgba(196,168,130,0.05); }
+.hl strong{color:#d4b896}
 
-/* ===== BUDGET BAR ===== */
-.budget-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 1.5rem 0;
+/* 列表 */
+ul{padding-left:18px;margin:6px 0 10px}
+li{font-size:.85rem;margin-bottom:6px;color:#d0c5b8;line-height:1.7}
+li::marker{color:#8B4513}
+.tag{
+  display:inline-block;padding:1px 10px;border-radius:4px;
+  font-size:.68rem;font-weight:600;
 }
-.budget-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.budget-label {
-  min-width: 180px;
-  color: rgba(245,247,240,0.7)7);
-  font-size: 0.85rem;
-}
-.budget-bar-wrap {
-  flex: 1;
-  height: 28px;
-  background: rgba(245,247,240,0.7)05);
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-}
-.budget-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--forest), var(--wood));
-  border-radius: 14px;
-  transition: width 1.5s ease;
-  position: relative;
-}
-.budget-bar .amount {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--dark);
-}
-.budget-total {
-  text-align: right;
-  color: var(--wood);
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(196,168,130,0.15);
-}
+.tag.g{background:rgba(80,180,80,0.12);color:#6aaa6a}
+.tag.o{background:rgba(255,107,53,0.12);color:#FF6B35}
+.tag.b{background:rgba(80,140,200,0.12);color:#6a9aca}
 
-/* ===== KPI CARDS ===== */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+/* 阶段 */
+.pg{display:grid;gap:6px;margin:10px 0}
+.pr2{
+  display:grid;grid-template-columns:75px 1fr;gap:8px;
+  padding:12px 14px;border-radius:8px;font-size:.82rem;
 }
-.kpi-card {
-  background: linear-gradient(135deg, rgba(196,168,130,0.08), rgba(91,140,90,0.05));
-  border: 1px solid rgba(196,168,130,0.15);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-.kpi-card:hover { border-color: var(--forest); transform: translateY(-4px); }
-.kpi-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-.kpi-value { font-size: 1.8rem; font-weight: 700; color: var(--wood); }
-.kpi-label { color: rgba(245,247,240,0.7)6); font-size: 0.8rem; margin-top: 0.3rem; }
+.pr2.p1{background:rgba(60,40,20,0.2)}
+.pr2.p2{background:rgba(80,40,20,0.2)}
+.pr2.p3{background:rgba(20,60,30,0.15)}
+.pr2 .tg{font-size:.7rem;font-weight:600;padding:2px 10px;border-radius:4px;text-align:center}
+.pr2.p1 .tg{background:rgba(139,69,19,0.2);color:#c4956a}
+.pr2.p2 .tg{background:rgba(255,107,53,0.15);color:#FF6B35}
+.pr2.p3 .tg{background:rgba(80,180,80,0.12);color:#6aaa6a}
+.pr2 .dc{color:#d0c5b8}
+.pr2 .dc sm{font-size:.7rem;color:#a09080;display:block;margin-top:2px}
 
-/* ===== TIMELINE ===== */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-  margin: 2rem 0;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--forest), var(--wood));
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-}
-.timeline-item::before {
-  content: ''er {
-  position: absolute;
-  left: -2rem;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  background: var(--forest);
-  border: 2px solid var(--dark);
-  border-radius: 50%;
-}
-.timeline-item h4 { color: var(--wood); font-size: 0.95rem; margin-bottom: 0.3rem; }
-.timeline-item p p { color: rgba(245,247,240,0.7)7); font-size: 0.85rem; line-height: 1.6; }
+/* 预算 */
+.bd{display:grid;gap:4px;margin:10px 0}
+.br{display:flex;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,0.02);border-radius:6px;font-size:.8rem}
+.br.tt{background:rgba(212,184,150,0.06);font-weight:700;border:1px solid rgba(212,184,150,0.1)}
 
-/* ===== COMPETITOR ===== */
-.competitor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+/* 底部 */
+.footer{
+  text-align:center;padding:24px;margin-top:20px;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(245,237,228,0.06);
+  border-radius:14px;
 }
-.competitor-card {
-  border: 1px solid rgba(196,168,130,0.12);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  background: rgba(245,247,240,0.7)02);
-  transition: all 0.3s ease;
-}
-.competitor-card:hover { border-color: var(--forest); transform: translateY(-2px); }
-.competitor-name { font-size: 1rem; color: var(--snow); font-weight: 600; }
-.competitor-score { color: var(--wood); font-size: 0.9rem; margin: 0.3rem 0; }
-.competitor-desc { color: rgba(245,247,240,0.7)6); font-size: 0.8rem; line-height: 1.6; }
+.footer .mt{font-size:.95rem;color:#d4b896;font-weight:600}
+.footer .me{font-size:.7rem;color:#a09080;margin-top:6px}
 
-/* ===== 自然山野动效 ===== */
-@keyframes floatLeaf {
-  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
-  15% { opacity: 0.5; }
-  50% { transform: translateY(-50vh) rotate(180deg) scale(0.8); opacity: 0.3; }
-  100% { transform: translateY(-100vh) rotate(360deg) scale(0.4); opacity: 0; }
-}
-@keyframes leafGlow {
-  0%,100% { text-shadow: 0 0 15px rgba(91,140,90,0.12), 0 0 30px rgba(91,140,90,0.03); }
-  50% { text-shadow: 0 0 25px rgba(91,140,90,0.3), 0 0 50px rgba(91,140,90,0.08); }
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes cardGlow {
-  0%,100% { box-shadow: 0 2px 12px rgba(91,140,90,0.04); }
-  50% { box-shadow: 0 8px 24px rgba(91,140,90,0.08); }
-}
-@keyframes borderPulse {
-  0% { border-color: rgba(91,140,90,0.08); }
-  50% { border-color: rgba(91,140,90,0.25); }
-  100% { border-color: rgba(91,140,90,0.08); }
-}
-.gradient-text {
-  background: linear-gradient(135deg, #5B8C5A, #7BC67E, #A8D8EA);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 4s ease infinite;
-}
-.nature-text {
-  animation: leafGlow 3s ease-in-out infinite;
-  color: var(--forest) !important;
-}
-.leaf-container {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-.leaf {
-  position: absolute;
-  top: -30px;
-  opacity: 0;
-  animation: floatLeaf 8s ease-in-out infinite;
-}
-.leaf:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 1.3rem; }
-.leaf:nth-child(2) { left: 20%; animation-delay: 2.5s; font-size: 0.8rem; }
-.leaf:nth-child(3) { left: 35%; animation-delay: 4s; font-size: 1rem; }
-.leaf:nth-child(4) { left: 50%; animation-delay: 1.5s; font-size: 0.9rem; }
-.leaf:nth-child(5) { left: 65%; animation-delay: 3.2s; font-size: 1.1rem; }
-.leaf:nth-child(6) { left: 80%; animation-delay: 5.5s; font-size: 0.7rem; }
-.leaf:nth-child(7) { left: 92%; animation-delay: 1.8s; font-size: 1.2rem; }
-.leaf:nth-child(8) { left: 42%; animation-delay: 6s; font-size: 0.8rem; }
-.leaf:nth-child(9) { left: 12%; animation-delay: 3.8s; font-size: 1rem; }
-.leaf:nth-child(10) { left: 72%; animation-delay: 2s; font-size: 0.9rem; }
-
-.card {
-  border: 1px solid rgba(91,140,90,0.08);
-  animation: cardGlow 4s ease-in-out infinite;
-  transition: all 0.4s ease;
-  background: var(--snow) !important;
-}
-.card:hover {
-  border-color: var(--forest);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(91,140,90,0.12);
-}
-
-.section-number {
-  animation: leafGlow 3s ease-in-out infinite;
-  color: var(--forest) !important;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  padding: 3rem 1.5rem;
-  border-top: 1px solid rgba(196,168,130,0.1);
-  color: rgba(245,247,240,0.7)3);
-  font-size: 0.8rem;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .strategy-flow { flex-direction: column; }
-  .strategy-arrow { transform: rotate(90deg); }
-  .budget-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-  .budget-label { min-width: auto; }
-  .nav a { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .kpi-grid { grid-template-columns: 1fr; }
-  .competitor-grid { grid-template-columns: 1fr; }
+/* 响应 */
+@media(max-width:640px){
+  .wrap{padding:0 8px 40px}
+  .hero{min-height:55vh;padding:40px 16px}
+  .card{padding:18px 16px;border-radius:12px}
+  .card-title{font-size:1.05rem}
+  .grid2{gap:6px}.gi{padding:10px}.gi .v{font-size:.82rem}
+  .grid3{gap:4px}.ki{padding:10px 4px}.ki .n{font-size:1rem}
+  .fg{gap:6px}
+  .tw{margin:8px -8px;border-radius:0}
+  table{font-size:.75rem;min-width:540px}
+  th,td{padding:6px 8px}
+  .pr2{grid-template-columns:65px 1fr;padding:8px 10px;font-size:.78rem}
 }
 </style>
 </head>
 <body>
-<div class="leaf-container">
-  <div class="leaf">🍃</div><div class="leaf">🌿</div>
-  <div class="leaf">🍂</div><div class="leaf">🍃</div>
-  <div class="leaf">🌿</div><div class="leaf">🍂</div>
-  <div class="leaf">🍃</div><div class="leaf">🌿</div>
-  <div class="leaf">🍂</div><div class="leaf">🍃</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🔥 塘沽 · 杭州道 · 东北菜</div>
+    <h1>
+      山野间铁锅炖
+      <small>全平台运营整合方案 · 美团点评+外卖+抖音+私域</small>
+    </h1>
+    <div class="sub">
+      <span>🥩 东北铁锅炖</span>
+      <span>🌲 山野间意境</span>
+      <span>🏠 170㎡含包间</span>
+      <span>💰 人均¥70-80</span>
+    </div>
+  </div>
+  <div class="scroll">⌄</div>
+</section>
+
+<!-- 1. 项目全景 -->
+<div class="card">
+  <div class="card-title"><span class="n">1</span> 🏔️ 项目全景</div>
+  <div class="grid2">
+    <div class="gi"><div class="l">🏪 店名</div><div class="v">山野间铁锅炖</div></div>
+    <div class="gi"><div class="l">⭐ 星级</div><div class="v">暂无星级（新店）</div></div>
+    <div class="gi"><div class="l">🍲 品类</div><div class="v">东北菜·铁锅炖</div></div>
+    <div class="gi"><div class="l">📍 位置</div><div class="v">塘沽·杭州道·安顺道</div></div>
+    <div class="gi"><div class="l">📐 面积</div><div class="v">170㎡（含二楼3包间）</div></div>
+    <div class="gi"><div class="l">💰 人均</div><div class="v">¥70-80</div></div>
+    <div class="gi"><div class="l">👥 客群</div><div class="v">家庭聚餐·朋友聚会·商务宴请</div></div>
+    <div class="gi"><div class="l">🏢 属性</div><div class="v">独立品牌·新店</div></div>
+  </div>
+  <div class="hl">
+    <strong>💡 品牌定位：</strong>「山野」——山间野味、自然本真 · 「铁锅炖」——东北烟火、豪爽粗犷<br>
+    将东北铁锅炖的豪迈与山野生态的意境融合，打造塘沽独一无二的「山野铁锅炖」体验。
+  </div>
 </div>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content" style="opacity:0">
-    <div class="hero-badge">🌿 塘沽新店 · 装修中</div>
-    <h1 class="hero-title nature-text">山野间</h1>
-    <div class="hero-sub nature-text">铁锅炖</div>
-    <p class="hero-desc">山野食材 · 柴火现炖 · 东北老味道<br>塘沽杭州道 · 170㎡双层空间 · 二楼包间</p>
-    <a href="#module1" class="hero-cta">🌿 查看完整方案</a>
+<!-- 2. 门店诊断 -->
+<div class="card accent">
+  <div class="card-title"><span class="n">2</span> 🔍 门店诊断</div>
+  <div class="tw">
+  <table>
+    <tr><th style="width:60px">维度</th><th>分析</th></tr>
+    <tr><td><strong>✅ 优势</strong></td><td>170㎡含包间，塘沽稀缺的大店铁锅炖；山野定位差异化明显；铁锅炖自带社交传播属性</td></tr>
+    <tr><td><strong>⚠️ 劣势</strong></td><td>新店无口碑/星级/销量；杭州道位置非核心商圈，自然流量有限</td></tr>
+    <tr><td><strong>🚀 机会</strong></td><td>塘沽铁锅炖品类有需求但品牌店少；包间可承接团建/家庭聚餐等高客单</td></tr>
+    <tr><td><strong>🛡 威胁</strong></td><td>周边东北菜/铁锅炖竞品；铁锅炖偏聚餐场景，工作日客流偏低</td></tr>
+  </table>
   </div>
-  <div class="scroll-indicator">
-    <span>向下滚动</span>
-    <div></div>
+  <div class="hl">
+    <strong>🎯 核心策略：</strong>「以美团点评做口碑+抖音同城引流+私域锁复购+外卖做增量——四驱联动，把山野间打造成塘沽铁锅炖第一品牌」
   </div>
-</section>
+</div>
 
-<!-- ===== NAV ===== -->
-<nav class="nav" id="navbar">
-  <div class="nav-inner">
-    <span class="nav-brand">🏔️ 山野间</span>
-    <a href="#module1">背景</a>
-    <a href="#module2">策略</a>
-    <a href="#module3">DM单</a>
-    <a href="#module4">团购</a>
-    <a href="#module5">私域</a>
-    <a href="#module6">活动</a>
-    <a href="#module7">合规</a>
-    <a href="#module8">收银</a>
-    <a href="#module9">节奏</a>
-    <a href="#module10">派发</a>
-    <a href="#module11">话术</a>
-    <a href="#module12">低谷</a>
-    <a href="#module13">收银话术</a>
-    <a href="#module14">预算</a>
-    <a href="#module15">KPI</a>
-    <a href="#module16">竞品</a>
-    <a href="#module17">总结</a>
+<!-- 3. 产品与定价 -->
+<div class="card">
+  <div class="card-title"><span class="n">3</span> 🥩 产品结构与定价</div>
+  <div class="tw">
+  <table>
+    <tr><th>品类</th><th>产品</th><th>定价</th><th>定位</th></tr>
+    <tr><td><strong>🔥 引流爆款</strong></td><td>小鸡炖蘑菇铁锅·双人餐</td><td class="pr">¥78</td><td>低价引流·尝鲜</td></tr>
+    <tr><td><strong>🥇 招牌必点</strong></td><td>铁锅炖大鹅·4人餐</td><td class="pr">¥188</td><td>招牌·走量·毛利主力</td></tr>
+    <tr><td><strong>🥩 硬菜系列</strong></td><td>排骨炖豆角·筋头巴脑锅·鱼锅</td><td class="pr">¥128-168</td><td>聚餐必点</td></tr>
+    <tr><td><strong>🌿 山野特色</strong></td><td>山野菜蘸酱·榛蘑炖土鸡·林蛙炖土豆</td><td class="pr">¥38-98</td><td>差异化·山野意境</td></tr>
+    <tr><td><strong>🧃 主食饮品</strong></td><td>玉米饼子·大碴粥·自制酸梅汤·东北拉皮</td><td class="pr">¥6-16</td><td>拉客单·配菜</td></tr>
+  </table>
   </div>
-</nav>
+  <div class="tw">
+  <table>
+    <tr><th>平台</th><th>套餐</th><th>内容</th><th>原价</th><th>售价</th></tr>
+    <tr><td>美团团购</td><td>🔥 双人尝鲜</td><td>小鸡炖蘑菇锅+玉米饼+酸梅汤2杯</td><td>¥115</td><td class="prh">¥78</td></tr>
+    <tr><td>美团团购</td><td>🔥🔥 4人聚餐</td><td>铁锅炖大鹅+山野菜+拉皮+饼子4个+酸梅汤</td><td>¥278</td><td class="pr">¥188</td></tr>
+    <tr><td>美团团购</td><td>🔥🔥🔥 6人欢聚</td><td>大鹅锅+排骨锅+山野菜×2+主食拼盘+饮品</td><td>¥468</td><td class="pr">¥328</td></tr>
+    <tr><td>抖音团购</td><td>🌿 双人山野体验</td><td>小鸡炖蘑菇+山野菜+玉米饼</td><td>¥115</td><td class="pr">¥79</td></tr>
+    <tr><td>抖音团购</td><td>🌿🌿 4人山野盛宴</td><td>大鹅锅+榛蘑炖鸡+野菜拼盘+主食</td><td>¥368</td><td class="pr">¥258</td></tr>
+  </table>
+  </div>
+</div>
 
-<!-- ===== MODULE 1: 背景概述 ===== -->
-<section class="section" id="module1">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">01 / 17</div>
-    <h2>背景概述</h2>
-    <p>门店信息 · 市场定位 · 核心目标</p>
+<!-- 4. 美团点评 -->
+<div class="card accent">
+  <div class="card-title"><span class="n">4</span> ⭐ 美团大众点评</div>
+  <div class="tw">
+  <table>
+    <tr><th style="width:55px">阶段</th><th>具体动作</th><th>目标</th></tr>
+    <tr>
+      <td><strong>D1-D7</strong></td>
+      <td>完善门店信息·上传铁锅咕嘟冒热气实拍·上线团购·引导评价</td>
+      <td>10-15条初始好评</td>
+    </tr>
+    <tr>
+      <td><strong>D8-D30</strong></td>
+      <td>新店特惠流量扶持·扫码点餐引导收藏打卡·优化头图套餐</td>
+      <td>冲塘沽东北菜TOP5</td>
+    </tr>
+    <tr>
+      <td><strong>D31+</strong></td>
+      <td>商户通投放(定向塘沽3公里)·每周5-8条评价</td>
+      <td>评分4.3+·月销300+</td>
+    </tr>
+  </table>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">📍</span> 门店档案</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--wood)">店名</strong><br><span style="color:rgba(245,247,240,0.7)7)">山野间铁锅炖（塘沽店）</span></div>
-      <div><strong style="color:var(--wood)">品类</strong><br><span style="color:rgba(245,247,240,0.7)7)">东北菜 · 铁锅炖</span></div>
-      <div><strong style="color:var(--wood)">位置</strong><br><span style="color:rgba(245,247,240,0.7)7)">塘沽杭州道·贝迪幼儿园东侧</span></div>
-      <div><strong style="color:var(--wood)">面积</strong><br><span style="color:rgba(245,247,240,0.7)7)">约170㎡ · 一楼8散台 · 二楼3包间</span></div>
-      <div><strong style="color:var(--wood)">状态</strong><br><span style="color:rgba(245,247,240,0.7)7)">装修中 · 暂无星级</span></div>
-      <div><strong style="color:var(--wood)">人均</strong><br><span style="color:rgba(245,247,240,0.7)7)">预计 ¥80</span></div>
-    </div>
+  <div class="hl">
+    <strong>💡 要点：</strong>① 头图用铁锅咕嘟冒热气视频 ② 每单引导好评（收藏打卡送玉米饼） ③ 包间场景实拍重点展示（家庭聚餐/团建场地）
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🎯</span> 市场定位</h3>
-    <p>塘沽杭州道核心居住区，紧邻贝迪幼儿园，周边社区（贻成园/吉安里/苏州里）人口密集。铁锅炖品类在塘沽有成熟消费基础，客单价中等偏上，天然具备社交属性——围锅而坐、边炖边吃，适合家庭聚餐、朋友聚会。170㎡双层空间+二楼包间，在同品类中具备差异化竞争力。</p>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">⭐</span> 核心目标</h3>
-    <p>开业即爆，首月建立口碑，冲刺<strong style="color:var(--wood)">滨海新区东北菜热门榜</strong>。以"山野食材·柴火现炖"为核心差异化，围挡蓄水+开业引爆+私域锁客三步走，稳扎稳打做成塘沽铁锅炖口碑店。</p>
-  </div>
-</section>
+</div>
 
-<!--section-->
+<!-- 5. 外卖 -->
+<div class="card">
+  <div class="card-title"><span class="n">5</span> 🛵 美团外卖</div>
+  <div class="tw">
+  <table>
+    <tr><th>维度</th><th>策略</th></tr>
+    <tr><td><strong>门店装修</strong></td><td>头图铁锅实拍·分类清晰·满减"满100减12、满200减28"</td></tr>
+    <tr><td><strong>品类覆盖</strong></td><td>单人套餐(铁锅炖饭¥28)·双人套餐·家庭套餐·山野菜系列</td></tr>
+    <tr><td><strong>配送范围</strong></td><td>覆盖塘沽核心区3-5公里·杭州道/工农村/洋货/外滩</td></tr>
+    <tr><td><strong>新店活动</strong></td><td>7天满减膨胀·下午茶炖菜7折·团餐满3份9折</td></tr>
+    <tr><td><strong>复购策略</strong></td><td>随单塞感谢卡·扫码领¥5下次可用·收藏店铺送券</td></tr>
+  </table>
+  </div>
+  <div class="hl">
+    💡 铁锅炖外卖包装用保温袋+山野间贴纸，让顾客拍照发朋友圈
+  </div>
+</div>
 
-<!-- ===== MODULE 2: 整体策略框架 ===== -->
-<section class="section" id="module2">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">02 / 17</div>
-    <h2 class="gradient-text">整体策略框架</h2>
-    <p>五管齐下 · 全链路覆盖</p>
+<!-- 6. 抖音 -->
+<div class="card accent">
+  <div class="card-title"><span class="n">6</span> 🎬 抖音同城</div>
+  <div class="grid2">
+    <div class="gi">
+      <div class="l">🎥 探店达人</div>
+      <div class="v" style="font-size:.82rem">塘沽本地美食达人3-5位·置换套餐+佣金</div>
+    </div>
+    <div class="gi">
+      <div class="l">📱 自运营</div>
+      <div class="v" style="font-size:.82rem">门店自拍铁锅咕嘟冒泡视频·上传POI</div>
+    </div>
+    <div class="gi">
+      <div class="l">🎯 话题标签</div>
+      <div class="v" style="font-size:.82rem">#塘沽美食 #铁锅炖 #东北菜 #山野间</div>
+    </div>
+    <div class="gi">
+      <div class="l">💰 同城投流</div>
+      <div class="v" style="font-size:.82rem">开业周¥200-300/天定向塘沽25-50岁</div>
+    </div>
   </div>
-  <div class="card" style="opacity:0">
-      <h3><span class="num">🔥</span> 围挡蓄水</span></h3>
-      <div class="strategy-flow">
-        <div class="strategy-item" style="animation-delay:0s">🏗️ 围挡蓄水</div>
-        <span class="strategy-arrow">→</span>
-        <div class="strategy-item" style="animation-delay:0.15s">📄 DM引流</div>
-        <span class="strategy-arrow">→</span>
-        <div class="strategy-item" style="animation-delay:0.3s">🎫 团购拉新</div>
-        <span class="strategy-arrow">→</span>
-        <div class="strategy-item" style="animation-delay:0.45s">💬 私域锁客</div>
-        <span class="strategy-arrow">→</span>
-        <div class="strategy-item" style="animation-delay:0.6s">🎉 开业引爆</div>
-      </div>
-    </div>
-    <div class="card" style="opacity:0;margin-top:1rem">
-      <h3><span class="num">💡</span> 核心逻辑</h3>
-      <p style="font-size:0.95rem;line-height:2">
-        <span class="tag tag-gold">"山野"品牌自带原生态信任感</span> →
-        <span class="tag tag-red">围挡+DM双渠道蓄水</span> →
-        <span class="tag tag-gold">"柴火现炖"差异化体验</span> →
-        团购¥99双人引流入店 →
-        私域社群锁定复购 →
-        家庭客群裂变传播
-      </p>
-    </div>
-</section>
+  <div class="hl">
+    <strong>💡 抖音内容方向：</strong>① 铁锅揭开瞬间"咕嘟咕嘟"冒泡 + 热气冲天（视觉冲击）② 山野菜采摘+入锅过程（山野意境）③ 包间聚餐氛围（社交场景）
+  </div>
+</div>
 
-<!-- ===== MODULE 3: DM单 ===== -->
-<section class="section" id="module3">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">03 / 17</div>
-    <h2>DM单版面设计</h2>
-    <p>A5双面 · 双二维码 · 优惠信息</p>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">📐</span> DM单规格</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--wood)">尺寸</strong><br><span style="color:rgba(245,247,240,0.7)7)">A5（148×210mm）双面</span></div>
-      <div><strong style="color:var(--wood)">纸质</strong><br><span style="color:rgba(245,247,240,0.7)7)">128g铜版纸</span></div>
-      <div><strong style="color:var(--wood)">印刷量</strong><br><span style="color:rgba(245,247,240,0.7)7)">5,000张</span></div>
-    </div>
- ️  </div>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🎨</span> 版面设计</h3>
-    <p><strong style="color:var(--wood)">正面：</strong>铁锅炖大鹅/排骨锅实拍大图 + "山野间·铁锅炖"品牌名 + 开业优惠信息（全场88折）</p>
-    <p><strong style="color:var(--wood)">背面：</strong>双二维码并排（码①团购领券 / 码②加群领¥5红包）+ 下方优惠栏（开业满减+赠菜信息）</p>
-    <p><strong style="color:var(--wood)">文案：</strong>"山野食材·柴火现炖"、"人均¥80吃好"、"二楼包间·家庭聚餐首选"</p>
-  </div>
-</section>
+<!-- 7. 小红书 -->
+<div class="card">
+  <div class="card-title"><span class="n">7</span> 📕 小红书种草</div>
+  <ul>
+    <li><strong>笔记方向：</strong>"塘沽居然藏着这样的山野小院""铁锅炖也能吃出意境感"</li>
+    <li><strong>照片风格：</strong>铁锅特写+山野环境+聚餐氛围，暖色调滤镜</li>
+    <li><strong>探店合作：</strong>邀5-8位素人免费体验产出笔记，主推"山野意境铁锅炖"概念</li>
+    <li><strong>打卡福利：</strong>发布小红书笔记到店立减¥20</li>
+  </ul>
+</div>
 
-<!-- ===== MODULE 4: 团购 ===== -->
-<section class="section" id="module4">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">04 / 17</div>
-    <h2 class="gradient-text">大众点评团购设计</h2>
-    <p>阶梯套餐 · 引流爆品 · 限时限量</p>
+<!-- 8. 私域+复购 -->
+<div class="card accent">
+  <div class="card-title"><span class="n">8</span> 💬 私域运营与复购</div>
+  <div class="fg">
+    <div class="fi"><div class="ic">👥</div><div class="t">微信群</div><div class="d">入群领¥20券·每日推今日炖菜·群专享加菜券</div></div>
+    <div class="fi"><div class="ic">🏆</div><div class="t">储值卡</div><div class="d">充500送80·充1000送200·充2000送500</div></div>
+    <div class="fi"><div class="ic">🎟️</div><div class="t">¥399次卡</div><div class="d">5次铁锅炖任选（含主食）·6个月有效</div></div>
+    <div class="fi"><div class="ic">🎂</div><div class="t">社群专属</div><div class="d">生日到店送炖菜·每月会员日88折·积分兑换</div></div>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🥩</span> 团购套餐体系</h3>
-    <div class="table-wrap">
-      <table class="data">
-        <tr><th>套餐名称</th><th>价格</th><th>内容</th><th>定位</th></tr>
-        <tr><td>🥇 双人尝鲜套餐</td><td><strong style="color:var(--wood)">¥99</strong></td><td>铁锅炖大鹅(小份)+玉米饼+凉菜</td><td>引流爆品</td></tr>
-        <tr><td>🥈 四人聚餐套餐</td><td><strong style="color:var(--wood)">¥198</strong></td><td>铁锅炖排骨+大鹅拼+配菜+主食</td><td>主力走量</td></tr>
-        <tr><td>🥉 六人欢聚套餐</td><td><strong style="color:var(--wood)">¥298</strong></td><td>铁锅炖大鹅+排骨+配菜4份+贴饼子</td><td>利润款</td></tr>
-      </table>
-    </div>
-    <p style="margin-top:1rem;color:rgba(245,247,240,0.7)6)">⏰ 开业首月限量500份 · 核销有效期30天</p>
-  </div>
-</section>
+</div>
 
-<!-- ===== MODULE 5: 私域 ===== -->
-<section class="section" id="module5">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">05 / 17</div>
-    <h2>扫码领券私域方案</h2>
-    <p>进群领红包 · 每日运营 · 复购锁客</p>
+<!-- 9. 开业引爆 -->
+<div class="card">
+  <div class="card-title"><span class="n">9</span> 🎉 开业引爆方案</div>
+  <div class="tw">
+  <table>
+    <tr><th>时段</th><th>活动名称</th><th>规则</th><th>目的</th></tr>
+    <tr><td><strong>D1-D3</strong></td><td>🔥 铁锅¥78开锅</td><td>小鸡炖蘑菇双人餐¥78（原价¥115）</td><td>聚人气·排队</td></tr>
+    <tr><td><strong>D4-D5</strong></td><td>🌿 山野菜免费送</td><td>点任意大锅+¥1换购山野菜一份</td><td>体验山野特色</td></tr>
+    <tr><td><strong>D6-D7</strong></td><td>🥩 买大锅送小锅</td><td>点大鹅锅送小鸡蘑菇锅（下次可用券）</td><td>锁复购</td></tr>
+    <tr><td><strong>持续</strong></td><td>📸 打卡有礼</td><td>美团/抖音打卡收藏送玉米饼</td><td>拉好评</td></tr>
+  </table>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">📱</span> 领券链路</h3>
-    <div class="strategy-flow">
-      <div class="strategy-item" style="animation-delay:0s">👀 看到围挡/DM</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.15s">📱 扫码领¥5券</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.3s">👥 进群</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.45s">🏪 到店核销</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.6s">📸 拍照发群再减¥5</div>
-    </div>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">📅</span> 私域运营日历</h3>
-    <div class="table-wrap">
-      <table class="data">
-        <tr><th>时段</th><th>周一</th><th>周二</th></tr>
-        <tr><td><strong>10:00</st<strong style="color:var(--wood)">10:00</strong></td>
-        <td>早安红包+特价锅预告</td><td>红包+双倍积分</td><td>红包+会员日</td><td>红包+新品试吃</td><td>红包+周末福利</td><td>红包+周末活动</td><td>红包+周总结</td></tr>
-        <tr><td><strong>16:00</strong></td>
-        <td>特价锅🫕</td><td>双倍积分🔥</td><td>会员日🎂</td><td>新品预告✨</td><td>周末预告🎯</td><td>今日活动📢</td><td>下周预告📋</td></tr>
-      </table>
-    </div>
-    <p style="margin-top:0.5rem;color:rgba(245,247,240,0.7)5);font-size:0.8rem">成本测算：¥5/人 × 预计首月500人 = ¥2,500</p>
-  </div>
-</section>
+</div>
 
-<!-- ===== MODULE 6: 活动 ===== -->
-<section class="section" id="module6">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">06 / 17</div>
-    <h2 class="gradient-text">开业现场活动设计</h2>
-    <p>基础活动 + 专项A/B/C</p>
+<!-- 10. KPI -->
+<div class="card accent">
+  <div class="card-title"><span class="n">10</span> 📊 KPI目标与预算</div>
+  <div class="grid3">
+    <div class="ki"><div class="n">4.3+</div><div class="l">⭐ 美团评分</div></div>
+    <div class="ki"><div class="n">300+</div><div class="l">📦 团购核销</div></div>
+    <div class="ki"><div class="n">70%+</div><div class="l">✅ 核销率</div></div>
+    <div class="ki"><div class="n">200+</div><div class="l">🛵 外卖月销</div></div>
+    <div class="ki"><div class="n">500+</div><div class="l">👥 私域社群</div></div>
+    <div class="ki"><div class="n">¥12-18万</div><div class="l">💰 首月营收</div></div>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🎊</span> 基础活动 — 全场88折（开业前3天）</h3>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-    <div class="card" style="opacity:0">
-      <h3><span class="num">A</span> 尝鲜引导</h3>
-      <p>首单立减¥10<br>扫码进群即可领取</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">B</span> 复购锁定</h3>
-      <p>消费满¥200赠¥40代金券<br>下次到店可用，有效期30天</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">C</span> 日常引流</h3>
-      <p>每日前10桌<br>免费送贴饼子一份</p>
-    </div>
-  </div>
-</section>
 
-<!-- ===== MODULE 7: 合规 ===== -->
-<section class="section" id="module7">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">07 / 17</div>
-    <h2>大众点评合规运营</h2>
-    <p>红线对照表 · 点星码规范</p>
+  <div class="pg">
+    <div class="pr2 p1"><div class="tg">📋 筹备期</div><div class="dc">D-14~D0 · 美团入驻+团购上线+抖音注册+物料+私域搭建<sm>预算：约¥2,500</sm></div></div>
+    <div class="pr2 p2"><div class="tg">🔥 引爆期</div><div class="dc">D1-D14 · 开业活动+达人探店+美团冲量+地推<sm>预算：约¥5,000-7,000</sm></div></div>
+    <div class="pr2 p3"><div class="tg">🌟 稳定期</div><div class="dc">D15-D60 · 商户通投流+私域运营+口碑维护+数据复盘<sm>预算：约¥2,000-3,000/月</sm></div></div>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🚫</span> 运营红线</h3>
-    <ul>
-      <li>❌ 禁止刷单、虚假交易、虚假评论</li>
-      <li>❌ 不得以优惠/赠品诱导好评</li>
-      <li>❌ 不得删除差评或恶意举报</li>
-      <li>✅ 点星码：消费后扫码 → 引导真实评价</li>
-      <li>✅ 好评置顶引导：鼓励顾客拍菜品实拍+环境图</li>
-      <li>✅ 差评48小时内回复整改 → 展示态度</li>
-    </ul>
-  </div>
-</section>
 
-<!-- ===== MODULE 8: 收银 ===== -->
-<section class="section" id="module8">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">08 / 17</div>
-    <h2>收银系统配合流程</h2>
-    <p>后台设置 · 核销操作 · 加群引导</p>
+  <div class="bd">
+    <div class="br"><span>开业物料（围挡/海报/传单/立牌）</span><span>¥800-1,200</span></div>
+    <div class="br"><span>美团团购上线/商户通</span><span>¥2,000-3,000</span></div>
+    <div class="br"><span>抖音达人探店3-5位</span><span>¥1,500-3,000</span></div>
+    <div class="br"><span>小红书素人5-8位</span><span>¥800-1,500</span></div>
+    <div class="br"><span>抖音同城投流（开业周）</span><span>¥1,000-2,000</span></div>
+    <div class="br"><span>地推物料+人工</span><span>¥500-800</span></div>
+    <div class="br tt"><span>🎯 首月总预算</span><span>约¥6,600-11,500</span></div>
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">💳</span> 收银流程</h3>
-    <div class="strategy-flow">
-      <div class="strategy-item" style="animation-delay:0s">🔧 系统设置核销码</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.15s">📲 顾客出示团购码</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.3s">✅ 扫码核销确认</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.45s">💬 加群领¥5红包</div>
-      <span class="strategy-arrow">→</span>
-      <div class="strategy-item" style="animation-delay:0.6s">🎫 满额赠券出票</div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== MODULE 9: 节奏 ===== -->
-<section id="module9">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">09 / 17</div>
-    <h2>活动节奏总览</h2>
-    <p>准备 → 预热 → 爆发 → 积累 → 稳定</p>
+  <div class="hl">
+    <strong>📈 营收测算（170㎡含包间·人均¥75）：</strong><br>
+    · 堂食：日均40-55桌（工作日/周末） × 均桌人数3.5 × ¥75 = ¥10,500-14,438/天<br>
+    · 外卖：日均20-30单 × 均价¥55 = ¥1,100-1,650/天（扣佣实收¥880-1,320）<br>
+    · <strong>日均总营收：¥11,380-15,758 · 月营收：¥34万-47万 · 首月目标：¥12-18万（爬坡期）</strong><br>
+    · 含3个包间承接高端聚餐/商务宴请，优先锁定高客单
   </div>
-  <div class="timeline">
-    <div class="timeline-item" style="opacity:0">
-      <h4>🏗️ 准备期（装修中 · 约45天）</h4>
-      <p>围挡悬挂+DM设计印刷+团购预上架+物料准备+员工培训</p>
-    </div>
-    <div class="timeline-item" style="opacity:0">
-      <h4>📣 预热期（开业前5天）</h4>
-      <p>DM派发+周边社区地推+朋友圈预热+社群试运营+围挡二维码持续蓄水</p>
-    </div>
-    <div class="timeline-item" style="opacity:0">
-      <h4>🎊 爆发期（开业3天）</h4>
-      <p>全场88折+赠券活动+团购冲量+私域红包+好评引导</p>
-    </div>
-    <div class="timeline-item" style="opacity:0">
-      <h4>📈 积累期（第4-14天）</h4>
-      <p>常规活动+专项A/B/C+私域运营起量+口碑积累</p>
-    </div>
-    <div class="timeline-item" style="opacity:0">
-      <h4>🔒 稳定期（第15-30天）</h4>
-      <p>复购锁客+会员体系建立+私域精细化运营+竞品对标调整</p>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- ===== MODULE 10: DM派发 ===== --> style="opacity:0">
-<section class="section" id="module10">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">10 / 17</div>
-    <h2>DM单派发策略</h2>
-    <p>定点 · 定时 · 定量</p>
+<!-- 总结 -->
+<div class="card" style="text-align:center;border-color:rgba(212,184,150,0.15)">
+  <div style="font-size:2.5rem;margin-bottom:6px">🏔️</div>
+  <div style="font-size:1.05rem;font-weight:700;color:#d4b896;line-height:1.8">
+    「铁锅炖的粗犷烟火 · 山野间的诗意意境<br>
+    美团点评做口碑 · 抖音同城引流量 · 私域复购锁客群<br>
+    让塘沽人提到铁锅炖，第一反应就是山野间」
   </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🗺️</span> 派发计划</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem">
-      <div><strong style="color:var(--wood)">总量</strong><br><span style="color:rgba(245,247,240,0.7)7)">5,000张</span></div>
-      <div><strong style="color:var(--wood)">地点</strong><br><span style="color:rgba(245,247,240,0.7)7)">贝迪幼儿园门口(放学高峰) · 杭州道菜市场 · 津塘路沿街商铺 · 贻成园/吉安里/苏州里社区</span></div>
-      <div><strong style="color:var(--wood)">时间</strong><br><span style="color:rgba(245,247,240,0.7)7)">开业前5天集中派发 + 开业期间续发</span></div>
-    </div>
-  </div>
-</section>
+  <div style="margin-top:10px;font-size:.7rem;color:#a09080">方案生成：2026-05-20 · 山野间铁锅炖 · 塘沽杭州道</div>
+</div>
 
-<!-- ===== MODULE 11: 话术 ===== -->
-<section class="section" id="module11">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">11 / 17</div>
-    <h2>地推人员话术</h2>
-    <p>各场景标准化话术</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🏗️</span> 围挡场景</h3>
-      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"您好！山野间铁锅炖马上开业了，扫码进群领¥5红包，开业还能享优惠！"</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">📄</span> DM派发</h3>
-      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"东北铁锅炖新店开业，扫码领券¥99双人餐超划算！二楼还有包间，家庭聚餐正合适！"</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🎫</span> 团购引导</h3>
-      <p style="color:rgba(245,247,240,0.7)7);line-height:1.8">"大众点评有团购券 ¥99双人餐更划算，扫码看看~"</p>
-    </div>
-  </div>
-</section>
+<div class="footer">
+  <div class="mt">🏔️ 山野间铁锅炖 · 山野之味 · 铁锅之魂</div>
+  <div class="me">粗犷不失意境 · 豪爽自有诗意</div>
+</div>
 
-<!-- ===== MODULE 12: 低谷 ===== -->
-<section class="section" id="module12">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">12 / 17</div>
-    <h2>客流低谷应对</h2>
-    <p>闲时引流 · 平效最大化</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🌙</span>` 工作日午餐</h3>
-      <p>每日特价锅·¥48小锅单人餐，一人也能吃铁锅炖</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🌧️</span> 雨天/淡日</h3>
-      <p>群内发"暴雨福利"、"今天有空桌，到店送凉菜"</p>
-    </div>
-    <div class="card" style="opacity:0">
-      <h3><span class="num">🕐</span> 下午空闲</h3>
-      <p>下午茶时段推铁锅炖尝鲜小份 + 啤酒买一送一</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MODULE 13: 收银话术 ===== -->
-<section class="section" id="module13">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">13 / 17</div>
-    <h2>收银员话术标准化</h2>
-    <p>通用话术 + 台卡配置</p>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🗣️</span> 标准话术链</h3>
-    <div class="table-wrap">
-      <table class="data">
-        <tr><th>场景</th><th>话术</th></tr>
-        <tr><td>核销时</td><td>"您有团购券吗？核销码给我扫一下~"</td></tr>
-        <tr><td>赠券时</td><td>"您消费满了¥200，送您一张¥40代金券，下次来用！"</td></tr>
-        <tr><td>加群时</td><td>"扫这个码进群，领¥5红包~以后群里还有各种福利！"</td></tr>
-        <tr><td>离别时</td><td>"铁锅炖炖得久，下次提前群里说一声，我们提前备好！"</td></tr>
-      </table>
-    </div>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">🪧</span> 台卡配置</h3>
-    <ul>
-      <li>📌 满¥200赠¥40代金券台卡（每桌摆放）</li>
-      <li>📌 加群领¥5红包台卡（收银台+每桌）</li style="list-style:
-      <li>📌 开业活动台卡（门口+收银台）</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===== MODULE 14: 预算 ===== -->
-<section class="section" id="module14">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">14 / 17</div>
-    <h2>预算汇总</h2>
-    <p>精细核算 · 按需分配</p>
-  </div>
-  <div class="card" style="opacity:0">
-    <h3><span class="num">💰</span> 预算明细</h3>
-    <div class="budget-chart">
-      <div class="budget-row">
-        <span class="budget-label">📄 DM单5,000张+设计</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:12%"><span class="amount">¥800</span></div></div>
-      </div>
-      <div class="budget-row">
-        <span class="budget-label">🏗️ 围挡制作+安装</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:9%"><span class="amount">¥600</span></div></div>
-      </div>
-      <div class="budget-row">
-        <span class="budget-label">🎫 团购平台佣金(10%)</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:22%"><span class="amount">¥1,500</span></div></div>
-      </div>
-      <div class="budget-row">
-        <span class="budget-label">💬 私域红包成本</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:37%"><span class="amount">¥2,500</span></div></div>
-      </div>
-      <div class="budget-row">
-        <span class="budget-label">🪧 台卡+桌贴+物料</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:6%"><span class="amount">¥400</span></div></div>
-      </div>
-      </div>
-      <div class="budget-row">
-        <span class="budget-label">👥 地推人员(3天×2人)</span>
-        <div class="budget-bar-wrap"><div class="budget-bar" style="width:14%"><span class="amount">¥900</span></div></div>
-      </div>
-      <div class="budget-total">总计：约 ¥6,700</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MODULE 15: KPI ===== -->
-<section class="section" id="module15">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">15 / 17</div>
-    <h2 class="gradient-text">KPI目标</h2>
-    <p>可量化 · 可追踪 · 可达成</p>
-  </div>
-  <div class="kpi-grid">
-    <div class="kpi-card" style="opacity:0">
-      <div class="kpi-icon">⭐</div>
-      <div class="kpi-value">4.0+</div>
-      <div class="kpi-label">大众点评评分</div>
-    </div>
-    <div class="kpi-card" style="opacity:0">
-      <div class="kpi-icon">🔖</div>
-      <div class="kpi-value">300+</div>
-      <div class="kpi-label">收藏量</div>
-    </div>
-    <div class="kpi-card" style="opacity:0">
-      <div class="kpi-icon">💰</div>
-      <div class="kpi-value">¥12-15万</div>
-      <div class="kpi-label">首月营收</div>
-    </div>
-    <div class="kpi-card" style="opacity:0">
-      <div class="kpi-icon">👥</div>
-      <div class="kpi-value">500+</div>
-      <div class="kpi-label">私域群人数</div>
-    </div>
-    <div class="kpi-card" style="opacity:0">
-      <div class="kpi-icon">✅</div>
-      <div class="kpi-value">70%+</div>
-      <div class="kpi-label">团购核销率</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MODULE 16: 竞品 ===== -->
-<section class="section" id="module16">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">16 / 17</div>
-    <h2>竞品分析</h2>
-    <p>知己知彼 · 差异化突围</p>
-  </div>
-  <div class="competitor-grid">
-    <div class="competitor-card" style="opacity:0">
-      <div class="competitor-name">🥉 东北往事·铁锅炖(芝麻街店)</div>
-      <div class="competitor-score">⭐ 3.7 · 滨海新区东北菜榜第19名</div>
-      <div class="competitor-desc">品牌知名度高，但评分偏低，位置稍远（世纪商务广场），山野间在杭州道位置更优</div>
-    </div>
-    <div class="competitor-card" style="opacity:0">
-      <div class="competitor-name">🥇 聚缘灶台锅铁锅炖鱼(望达街店) name">🥇 聚缘灶台锅铁锅炖鱼(望达街店)</div>
-      <div class="competitor-score">⭐ 4.8 · 口味榜第1 · ¥62/人</div>
-      <div class="competitor-desc">品质标杆，但主打灶台鱼而非铁锅炖全品类，价格略高。山野间可做差异化——铁锅炖大鹅/排骨+包间</div>
-    </div>
-    <div class="competitor-card" style="opacity:0">
-      <div class="competitor-name">🥈 筒子沟铁锅炖活鱼(塘沽店)</div>
-      <div class="competitor-score">¥57/人 · 新店</div>
-      <div class="competitor-desc">价格更优惠，但位置偏杭州道/福州道，缺少包间配置。山野间二楼包间是核心差异</div>
-    </div>
-  </div>
-  <div class="card" style="opacity:0;margin-top:1rem">
-    <h3><span class="num">🏔️</span> 山野间差异化优势</h3>
-    <ul>
-      style="font-weight:600;color:var(--wood)">"山野"品牌自带原生态食材联想</li>
-      <li>170㎡双层空间 + 二楼3个包间，满足聚餐宴请需求</li>
-      <li>人均¥80适中，新店开业优惠力度大</li>
-      <li>围挡+DM+团购+私域全链路覆盖，竞品多以传统方式运营</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===== MODULE 17: 总结 ===== -->
-<section class="section" id="module17">
-  <div class="section-header" style="opacity:0">
-    <div class="section-number">17 / 17</div>
-    <h2 class="gradient-text">总结</h2>
-    <p>稳扎稳打 · 开业即爆</p>
-  </div>
-  class="card" style="opacity:0;text-align:center;border:2px solid rgba(196,168,130,0.3)">
-    <p style="font-size:1.1rem;line-height:2;color:rgba(245,247,240,0.7)85)">
-      山野间铁锅炖坐拥<strong style="color:var(--wood)">塘沽成熟社区位置</strong>，<br>
-      170㎡空间+包间配置在同品类中具备竞争力。<br><br>
-      以<strong style="color:var(--forest)">"山野食材·柴火现炖"</strong>为核心差异化，<br>
-      <strong style="color:var(--wood)">围挡蓄水 + DM引流 + 团购拉新 + 私域锁客 + 开业引爆</strong><br>
-      五管齐下，开业首月稳扎稳打。<br><br>
-      🎯 冲刺<strong style="color:var(--wood)">滨海新区东北菜热门榜</strong><br>
-      打造塘沽铁锅炖口碑店！
-    </p>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <p>本方案由 山野间铁锅炖 × 1024小助手 联合出品</p>
-  <p style="margin-top:0.3rem">© 2026 山野间铁锅炖（塘沽店） · 经营者：刘海</p>
-</footer>
-
-<script>
-// ===== Floating Nature Particles =====
-(function() {
-  const hero = document.querySelector('.hero');
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    p.className = 'flame-particle';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (12 + Math.random() * 15) + 's';
-    p.style.animationDelay = (Math.random() * 12) + 's';
-    p.style.width = (3 + Math.random() * 5) + 'px';
-    p.style.height = p.style.width;
-    p.style.background = ['#7BC67E','#5B8C5A','#A8D8EA','#C4A882'][Math.floor(Math.random()*4)];
-    p.style.boxShadow = 'none';
-    hero.appendChild(p);
-  }
-})();
-
-// ===== Hero Fade In =====
-(function() {
-  const el = document.querySelector('.hero-content');
-  setTimeout(() => { el.style.opacity = '1'; el.style.transition = 'opacity 1.5s ease'; }, 300);
-})();
-
-// ===== Nav Scroll Effect effects
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 80);
-});
-
-// ===== Scroll Trigger Animations =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.section-header, .card, .kpi-card, .competitor-card, .timeline-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
-
-// ===== Active Nav Highlight =====
-const navLinks = document.querySelectorAll('.nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  document.querySelectorAll('.section').forEach(s => {
-    if (window.scrollY >= s.offsetTop - 150) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
-
-// ===== Budget Bar Animate =====
-const budgetObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.budget-bar').forEach(bar => {
-        const w = bar.style.width;
-        bar.style.width = '0';
-        setTimeout(() => { bar.style.width = w; bar.style.transition = 'width 1.2s ease'; }, 200);
-      });
-    }
-  });
-}, { threshold: 0.3 });
-const b = document.querySelector('.budget-chart');
-if (b) budgetObserver.observe(b);
-</script>
+</div>
 </body>
 </html>
